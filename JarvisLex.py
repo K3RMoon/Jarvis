@@ -12,11 +12,13 @@ actions = {
     'Modulo': 'Modulo',
     'Power': 'POWER',
     'Root': 'ROOT',
+    'Joke': 'JOKE',
+    #will likely trim down by removing file management actions
     'Save': 'SAVE',
     'Delete': 'DELETE',
     'Update': 'UPDATE',
     'Move': 'MOVE',
-    'Joke': 'JOKE',
+    #SearchImage may also be removed
     'SearchImage': 'SEARCHIMAGE',
 
 }
