@@ -40,10 +40,10 @@ reserved.update(actions)
 
 
 tokens = [
-    'NUMBER',
-    'UNKNOWN',
-    'ID',
-    'STRING',
+    'NUMBER',   #done
+    'UNKNOWN',  #done
+    'ID',       #done
+    'STRING',   #done
     'LP',
     'RP',
     'LC',
@@ -52,7 +52,7 @@ tokens = [
     'SEMICOLON',
     'COLON',
     'ADD',
-    'QUOTES',
+   # 'QUOTES', #removed because Kelvin
     'PERIOD',
     'PLUS',
     'OR',
@@ -83,6 +83,15 @@ def t_STRING(t):
 
 
 
+t_SEMICOLON = r';'
+t_COLON = r':'
+t_ADD = r'+'
+#QUOTES = r'\"' #LIKELY NEEDS TO BE REMOVED BECAUSE ALREADY IMPLEMENTED.
+t_PERIOD = r'.'
+t_PLUS = r'+'
+t_OR = r'or'
+t_AND = r'and'
+t_NOT = r'not'
 
 
 
