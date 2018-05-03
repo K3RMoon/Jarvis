@@ -123,6 +123,15 @@ t_AND = r'and'
 #Not Token
 t_NOT = r'not'
 
+#Ignored Characters
+t_ignore = ' \t\n'
 
+#Error
+def t_error(t):
+    print("Illegal Character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+#Build Lexer
+lexer = lex.lex()
 
 
