@@ -83,16 +83,16 @@ def t_STRING(t):
     return t
 
 #Left Parenthesis Token
-t_LP = r'('
+t_LP = r'\('
 
 #Right Parenthesis Token
-t_RP = r')'
+t_RP = r'\)'
 
 #Left Curly Token
-t_LC = r'{'
+t_LC = r'\{'
 
 #Right Curly Token
-t_RC = r'}'
+t_RC = r'\}'
 
 #Comma Curly Token
 t_COMMA = r','
@@ -112,7 +112,7 @@ t_ADD = r'@'
 t_PERIOD = r'.'
 
 #Plus Symbol Token
-t_PLUS = r'+'
+t_PLUS = r'\+'
 
 #Or Token
 t_OR = r'or'
