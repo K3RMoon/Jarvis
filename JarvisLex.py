@@ -74,23 +74,53 @@ def t_ID(t):
     t.type = reserved.get(t.value, 'ID') #Check for reserved words
     return t
 
-#Rule for unknown characters
+#Unknown Character Token
 t_UNKNOWN = r'\?'
 
+#Rule for Strings
 def t_STRING(t):
     r'(\"[a-zA-Z0-9_?!@#$%&*-+().,]*\")'
     return t
 
+#Left Parenthesis Token
+t_LP = r'('
 
+#Right Parenthesis Token
+t_RP = r')'
 
+#Left Curly Token
+t_LC = r'{'
+
+#Right Curly Token
+t_RC = r'}'
+
+#Comma Curly Token
+t_COMMA = r','
+
+#Semicolon Token
 t_SEMICOLON = r';'
+
+#Colon Token
 t_COLON = r':'
-t_ADD = r'+'
+
+#Address Symbol Token
+t_ADD = r'@'
+
 #QUOTES = r'\"' #LIKELY NEEDS TO BE REMOVED BECAUSE ALREADY IMPLEMENTED.
+
+#Period Symbol Token
 t_PERIOD = r'.'
+
+#Plus Symbol Token
 t_PLUS = r'+'
+
+#Or Token
 t_OR = r'or'
+
+#And Token
 t_AND = r'and'
+
+#Not Token
 t_NOT = r'not'
 
 
