@@ -30,6 +30,9 @@ reserved = {
     'Learn': 'LEARN',
     'Forget': 'FORGET',
     'Action': 'ACTION',
+    'or': 'OR',
+    'and': 'AND',
+    'not': 'NOT',
 
 }
 
@@ -55,9 +58,9 @@ tokens = [
    # 'QUOTES', #removed because Kelvin
     'PERIOD',
     'PLUS',
-    'OR',
-    'AND',
-    'NOT'
+    #'OR',
+    #'AND',
+    #'NOT'
 
 ] + list(reserved.values())
 
@@ -79,7 +82,7 @@ t_UNKNOWN = r'\?'
 
 #Rule for Strings
 def t_STRING(t):
-    r'(\"[a-zA-Z0-9_?!@#$%&*-+().,]*\")'
+    r'\"[a-zA-Z0-9_?!@#$%&*-+()., \t\n]*\"'
     return t
 
 #Left Parenthesis Token
@@ -89,10 +92,10 @@ t_LP = r'\('
 t_RP = r'\)'
 
 #Left Curly Token
-t_LC = r'\{'
+t_LC = r'{'
 
 #Right Curly Token
-t_RC = r'\}'
+t_RC = r'}'
 
 #Comma Curly Token
 t_COMMA = r','
@@ -109,7 +112,7 @@ t_ADD = r'@'
 #QUOTES = r'\"' #LIKELY NEEDS TO BE REMOVED BECAUSE ALREADY IMPLEMENTED.
 
 #Period Symbol Token
-t_PERIOD = r'.'
+t_PERIOD = r'\.'
 
 #Plus Symbol Token
 t_PLUS = r'\+'
@@ -134,4 +137,18 @@ def t_error(t):
 #Build Lexer
 lexer = lex.lex()
 
+# Test it out
+data = '''
+"Kelvin or Sucks" + herbertherb3rt ((}) + ; . or and
+'''
+
+# Give the lexer some input
+lexer.input(data)
+
+# Tokenize
+while True:
+    tok = lexer.token()
+    if not tok:
+        break      # No more input
+    print(tok)
 
