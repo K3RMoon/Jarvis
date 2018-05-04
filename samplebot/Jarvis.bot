@@ -2,3 +2,6 @@ learn something:Learn$What's should i learn
 add 2 numbers:Action$SUM
 hey:Response$Hello
 how are u?:Response$I'm doing just fine
+learn something:Learn$What's should i learn
+add 2 numbers:Action$SUM
+add 2 numbers ~param ~param:Action$SUM
