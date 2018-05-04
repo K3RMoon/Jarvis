@@ -17,8 +17,38 @@ class bot:
         self.rules[phrase.lower()]= RuleType+'$'+response
         self.rulesManager.writeContent(self.rules)
 
+
+
+#Nice, but we need to fix to adhere with project rules with one specific annoying thing...
+    #we need to be able to give the input variables as part of the initial input, not just being asked after
+    #so we need to tokenize it somehow, separate a specific symbol, like (%) for now [could and maybe should be changed]
+    # in order to validate, go through all lists and check if equal
+
+    def checkRule(self, rule, ruleList): #by Herbert, will try to do the new verification here
+        x=1
+
+
     def handleInput(self, r):
+
+        rlist = r.split(" ")
+        rlen = rlist.__len__()
+        print(rlen)
+
+        samelenrules = []
+        printme=list(self.rules.keys())
+        print(printme)
+        for x in list(self.rules.keys()):
+            xlist = (str(x)).split(" ")
+            #print (xlist)
+            print (xlist.__len__())
+            if xlist.__len__() == rlen:
+                samelenrules.append(xlist)
+                print(xlist)
+        print(samelenrules)
+
+
         r = r.lower()
+
         if r in self.rules.keys():
             rule = str(self.rules[r])
             rContent = rule.partition('$')
@@ -38,7 +68,7 @@ class bot:
             self.learn(attrName, attrVal)
         if(rule[0].lower()=="action"):
             if(rule[1].lower()=="sum"):
-                numb1 = int(input("Enther the first number:" ))
+                numb1 = int(input("Enter the first number:" ))
                 numb2 = int(input("Enter the second number: "))
                 print("The result is "+str(Actions.Sum(numb1, numb2)))
 
@@ -61,6 +91,7 @@ b.addRule("Hey","Response","Hello")
 b.addRule("How are u?", "Response","I'm doing just fine")
 b.addRule("Learn something", "Learn", "What's should i learn")
 b.addRule("Add 2 numbers", "Action", "SUM")
+b.addRule("Add 2 numbers ~param ~param", "Action", "SUM")
 b.forget("name")
 
 
