@@ -1,4 +1,4 @@
-class rule:
+class Rule:
 
     def __init__(self, name, delimiter, responses):
         self.name = name
@@ -26,7 +26,7 @@ class Response:
 
 
 
-class variable:
+class Variable:
 
     def __init__(self, name, value):
         self.name = name

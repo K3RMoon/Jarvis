@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-import JarvisTools
+import JarvisTools as JT
 from JarvisLex import tokens
 
 variables = []
@@ -34,16 +34,16 @@ def add_variable(name, value):
     if variable_in_use(name):
         print("Error: Duplicate Variable: " + name) #We might not need to print it directly TODO: Change to Error
 
-   # v = variable(name, value)
-   # variables.append(v)
+    v = JT.Variable(name, value)
+    variables.append(v)
 
 def add_rule(name, delimeter, responses):
     if rule_in_use(name):
         print("Error: Duplicate Rule: " + name) #We might not need to print directly TODO: Change to Error
         return False
 
-    #r = rule(name, delimeter, responses)
-    #rules.append(r)
+    r = JT.Rule(name, delimeter, responses)
+    rules.append(r)
     return True
 
 #def string_to_rule(ruleString):
