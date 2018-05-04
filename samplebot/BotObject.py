@@ -23,9 +23,26 @@ class bot:
     #we need to be able to give the input variables as part of the initial input, not just being asked after
     #so we need to tokenize it somehow, separate a specific symbol, like (%) for now [could and maybe should be changed]
     # in order to validate, go through all lists and check if equal
-
+    # the symbol to use is now (~) because (%) is already used by python I guess
     def checkRule(self, rule, ruleList): #by Herbert, will try to do the new verification here
-        x=1
+        trues = 0
+        cindex2=-1
+        for y in ruleList:
+            cindex2+=1
+            cindex = -1
+            for x in rule:
+                cindex+= 1
+               # print(x)
+               # print(ruleList[cindex2][cindex])
+                if not (ruleList[cindex2][cindex][0]=='~' or x == ruleList[cindex2][cindex]):
+                    trues = 0
+                    print(trues)
+                else:
+                    trues+=1
+                    print(trues)
+                    if (trues== rule.__len__()):
+                        return True
+        return False
 
 
     def handleInput(self, r):
@@ -46,8 +63,11 @@ class bot:
                 print(xlist)
         print(samelenrules)
 
-
         r = r.lower()
+
+        status = self.checkRule(rlist, samelenrules)
+        print(status)
+
 
         if r in self.rules.keys():
             rule = str(self.rules[r])
