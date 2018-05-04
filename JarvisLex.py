@@ -139,7 +139,7 @@ lexer = lex.lex()
 
 # Test it out
 data = '''
-"Kelvin or Sucks" + herbertherb3rt ((}) + ; . or and
+"Kelvin or Sucks" + herbertherb3rt ((}) + ; . or and Create RollDice
 '''
 
 # Give the lexer some input
