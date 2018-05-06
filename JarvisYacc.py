@@ -7,27 +7,27 @@ rules = []
 
 def variable_in_use(name):
     for variable in variables:
-        if variable.name == name:
+        if variable.get_name == name:
             return True
 
     return False
 
 def rule_in_use(name):
     for rule in rules:
-        if rule.name == name:
+        if rule.get_name == name:
             return True
 
     return False
 
 def search_variable(name):
     for variable in variables:
-        if variable.name == name:
+        if variable.get_name == name:
             return variable
 
 
 def search_rule(name):
     for rule in rules:
-        if rule.name == name:
+        if rule.get_name == name:
             return rule
 
 def add_variable(name, value):
