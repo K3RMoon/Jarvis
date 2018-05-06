@@ -94,7 +94,7 @@ class Action:
         return self.parameter
 
     def set_action(self, action):
-        self.action =action
+        self.action = action
 
     def set_parameter(self, parameter):
         self.parameter = parameter
