@@ -1,1 +1,2 @@
-"HI":Response("Hey");
+"Hi":Response("Hey");
+"Hello":Response("Hi");
