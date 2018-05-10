@@ -4,6 +4,7 @@ from JarvisLex import tokens
 
 variables = []
 rules = []
+bot = JT.bot("Kelvin")
 
 def variable_in_use(name):
     for variable in variables:
@@ -46,6 +47,14 @@ def add_rule(name, delimeter, responses):
     rules.append(r)
     return True
 
-#def string_to_rule(ruleString):
+def p_response_rule(p):
+    '''response_rule : STRING COLON RESPONSE LP STRING RP SEMICOLON'''
+    print(p[1])
+    print(p[5])
+    bot.addRule(p[1], "Response", p[5])
+
+
+# Build the parser
+parser = yacc.yacc()
 
 

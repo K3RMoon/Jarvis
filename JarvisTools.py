@@ -1,3 +1,6 @@
+from samplebot.FileManager import FileManager
+import samplebot.Actions
+
 class Rule:
 
     def __init__(self, name, delimiter, responses):
@@ -98,3 +101,20 @@ class Action:
 
     def set_parameter(self, parameter):
         self.parameter = parameter
+
+class bot:
+    def __init__(self, name):
+        self.name = name
+        self.rulesManager = FileManager(name+".bot")#rules files
+        self.fileManager = FileManager("knowledge.bot") #knowledge file
+        self.rules = {}
+        self.knowledge = self.fileManager.getDictionary()
+        # print(self.knowledge)
+
+    def learn(self, attrName, attr):
+        self.knowledge[attrName] = attr #allows overwrite
+        self.fileManager.writeContent(self.knowledge)
+
+    def addRule(self, phrase, RuleType, response):
+        self.rules[phrase.lower()]= RuleType+'$'+response
+        self.rulesManager.writeContent(self.rules)

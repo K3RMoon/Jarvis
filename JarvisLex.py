@@ -138,8 +138,9 @@ def t_error(t):
 lexer = lex.lex()
 
 # Test it out
+'''
 data = '''
-"Kelvin or Sucks" + herbertherb3rt ((}) + ; . or and Create RollDice
+"Kelvin or Sucks" #+ herbertherb3rt ((}) + ; . or and Create RollDice
 '''
 
 # Give the lexer some input
@@ -152,3 +153,4 @@ while True:
         break      # No more input
     print(tok)
 
+'''
