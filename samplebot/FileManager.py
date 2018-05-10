@@ -2,9 +2,10 @@ import os.path
 class FileManager:
     def __init__(self, filename):
         self.filename = filename
-        if not os.path.isfile(filename):
+        if not os.path.isfile(filename): #FIX HERE THE THING: aqui se debe arreglar lo de file que ya existe (Evitar update)
             cont = open(filename, "w")
             cont.close()
+
             
     def writeContent(self, diction):
         with open(self.filename, "w") as cont:
