@@ -15,9 +15,10 @@ class bot:
         self.fileManager.writeContent(self.knowledge)
 
     def addRule(self, phrase, RuleType, response):
+
         self.rules[phrase.lower()]= RuleType+'$'+response
         self.rulesManager.writeContent(self.rules)
-
+        print (self.rules)
 
 
 
@@ -142,6 +143,7 @@ b.addRule("How are u?", "Response","I'm doing just fine")
 b.addRule("Learn something", "Learn", "What's should i learn")
 #b.addRule("Add 2 numbers", "Action", "SUM") #outdated sum, no arguments
 b.addRule("Add 2 numbers ~num1 ~num2", "Action", "SUM")
+b.addRule("Hi", "Response", "Hey!")
 b.forget("name")
 
 '''''
