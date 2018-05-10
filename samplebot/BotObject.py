@@ -1,10 +1,11 @@
 from FileManager import FileManager
 import Actions
+
 class bot:
     def __init__(self, name):
         self.name = name
-        self.rulesManager = FileManager(name+".bot")
-        self.fileManager = FileManager("knowledge.bot")
+        self.rulesManager = FileManager(name+".bot")#rules files
+        self.fileManager = FileManager("knowledge.bot") #knowledge file
         self.rules = self.rulesManager.getDictionary()
         self.knowledge = self.fileManager.getDictionary()
         # print(self.knowledge)
