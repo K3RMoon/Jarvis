@@ -1,4 +1,5 @@
 from JarvisYacc import parser
+from JarvisYacc import bot
 import JarvisTools as JT
 
 
@@ -14,8 +15,8 @@ with open('Test.txt','r') as test:
         parser.parse(l)
 
 
-b = JT.bot("Kelvin")
+# b = JT.bot("Kelvin")
 l=""
 while not(l.lower() == "quit"):
     l = str(input("Enter a command: "))
-    r = b.handleInput(l)
+    r = bot.handleInput(l)

@@ -1,0 +1,153 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ACTION
+    ADD
+    AND
+    COMMA
+    CREATE
+    DELETE
+    DIVIDE
+    FORGET
+    ID
+    JOKE
+    LC
+    LEARN
+    MOVE
+    MULTIPLY
+    Modulo
+    NOT
+    NUMBER
+    OR
+    PERIOD
+    PLUS
+    POWER
+    RANDOM
+    RC
+    ROLLDICE
+    ROOT
+    RULES
+    SAVE
+    SEARCHIMAGE
+    SUBTRACT
+    SUM
+    UNKNOWN
+    UPDATE
+
+Grammar
+
+Rule 0     S' -> response_rule
+Rule 1     response_rule -> STRING COLON RESPONSE LP STRING RP SEMICOLON
+
+Terminals, with rules where they appear
+
+ACTION               : 
+ADD                  : 
+AND                  : 
+COLON                : 1
+COMMA                : 
+CREATE               : 
+DELETE               : 
+DIVIDE               : 
+FORGET               : 
+ID                   : 
+JOKE                 : 
+LC                   : 
+LEARN                : 
+LP                   : 1
+MOVE                 : 
+MULTIPLY             : 
+Modulo               : 
+NOT                  : 
+NUMBER               : 
+OR                   : 
+PERIOD               : 
+PLUS                 : 
+POWER                : 
+RANDOM               : 
+RC                   : 
+RESPONSE             : 1
+ROLLDICE             : 
+ROOT                 : 
+RP                   : 1
+RULES                : 
+SAVE                 : 
+SEARCHIMAGE          : 
+SEMICOLON            : 1
+STRING               : 1 1
+SUBTRACT             : 
+SUM                  : 
+UNKNOWN              : 
+UPDATE               : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+response_rule        : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . response_rule
+    (1) response_rule -> . STRING COLON RESPONSE LP STRING RP SEMICOLON
+
+    STRING          shift and go to state 2
+
+    response_rule                  shift and go to state 1
+
+state 1
+
+    (0) S' -> response_rule .
+
+
+
+state 2
+
+    (1) response_rule -> STRING . COLON RESPONSE LP STRING RP SEMICOLON
+
+    COLON           shift and go to state 3
+
+
+state 3
+
+    (1) response_rule -> STRING COLON . RESPONSE LP STRING RP SEMICOLON
+
+    RESPONSE        shift and go to state 4
+
+
+state 4
+
+    (1) response_rule -> STRING COLON RESPONSE . LP STRING RP SEMICOLON
+
+    LP              shift and go to state 5
+
+
+state 5
+
+    (1) response_rule -> STRING COLON RESPONSE LP . STRING RP SEMICOLON
+
+    STRING          shift and go to state 6
+
+
+state 6
+
+    (1) response_rule -> STRING COLON RESPONSE LP STRING . RP SEMICOLON
+
+    RP              shift and go to state 7
+
+
+state 7
+
+    (1) response_rule -> STRING COLON RESPONSE LP STRING RP . SEMICOLON
+
+    SEMICOLON       shift and go to state 8
+
+
+state 8
+
+    (1) response_rule -> STRING COLON RESPONSE LP STRING RP SEMICOLON .
+
+    $end            reduce using rule 1 (response_rule -> STRING COLON RESPONSE LP STRING RP SEMICOLON .)
+

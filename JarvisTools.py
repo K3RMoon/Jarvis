@@ -128,13 +128,13 @@ class bot:
        # self.rules = self.rulesManager.getDictionary()
 
     def handleInput(self, r):
-
+        r = r.lower()
         rlist = r.split(" ")
         rlen = rlist.__len__()
         #print(rlen)
         #print(self.rules)
         samelenrules = []
-        printme=list(self.rules.keys())
+        # printme=list(self.rules.keys())
         #print(printme)
         for x in list(self.rules.keys()):
             xlist = (str(x)).split(" ")
@@ -145,15 +145,14 @@ class bot:
                 #print(xlist)
         #print(samelenrules)
 
-        r = r.lower()
         #checks if rule is valid among same length rules.
         #WARNING OF POSSIBLE ISSUES: what if the input we want is a long string? as in, more than one token?
         # this might cause some issues since we separate stuff by spaces
         params = []
         status = self.checkRule(rlist, samelenrules, params)
-        print(status)
+        # print(status)
         r = " ".join(str(e) for e in rlist)
-        print(r)
+        # print(r)
         #if r in self.rules.keys():
         if status:
             rule = str(self.rules[r])
@@ -162,7 +161,8 @@ class bot:
             rValue = rContent[2]
             self.handleRule([rType, rValue], params)
         else:
-            print("Rule unknown")
+            if(r!='quit'):
+                print("Rule unknown")
     def handleRule(self, rule, params):
         if(rule[0].lower()=="response"):
             print(rule[1])
