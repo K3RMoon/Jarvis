@@ -1,7 +1,46 @@
+import math
 import random
+from random import randint
 def RollDice():
     return random.randint(1,6)
 def Sum(a,b):
     return a+b
 def Substract(a,b):
     return a-b
+def Multiply (a,b):
+    return a*b
+def Divide (a,b):
+    return a/b
+def RollDice ():
+    return randint(1, 6)
+def Modulo(a,b):
+    return a%b
+def Power (a,b):
+    return math.pow(a, b)
+def Root (a):
+    return math.sqrt(a)
+def Joke():
+    return random.choice(jokes)
+def Random():
+    return random.randint()
+jokes = [
+    "What did the dog say after a long day at work? Today was ruff.",
+    "Knock, knock.\nWho’s there?\nKanye.\nKanye who?\nKanye believe it? I tell jokes too!",
+    "What do you call a can opener that doesn’t work? A can’t opener.",
+    "Why can’t you trust an atom? Because they make up literally everything."
+]
+
+'''
+RollDice()
+Random 
+Sum
+Multiply
+Divide
+Subvstract
+modulo
+power
+root
+fileshit #no
+joke
+image #no
+'''
