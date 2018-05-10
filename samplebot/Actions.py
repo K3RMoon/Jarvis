@@ -10,7 +10,7 @@ def Substract(a,b):
 def Multiply (a,b):
     return a*b
 def Divide (a,b):
-    return a/b
+    return int(a/b)
 def RollDice ():
     return randint(1, 6)
 def Modulo(a,b):
