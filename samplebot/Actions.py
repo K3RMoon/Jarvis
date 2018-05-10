@@ -6,6 +6,7 @@ def Sum(a,b):
 def Substract(a,b):
     return a-b
 
+
 # ANDS and ORS of actions
 # Parameter in responses "Hello ~name"
 # Responses with more than one string

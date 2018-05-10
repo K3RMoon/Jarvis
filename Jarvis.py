@@ -1,5 +1,6 @@
 from JarvisYacc import parser
-import sys
+import JarvisTools as JT
+
 
 def execute_lines(lines):
     for line in lines:
@@ -7,10 +8,14 @@ def execute_lines(lines):
         if not line: continue
         print(parser.parse(line))
 
+
 with open('Test.txt','r') as test:
     for l in test:
         parser.parse(l)
-    l=""
-    while not(l.lower() == "quit"):
-        l = str(input("Enter a command: "))
-        r = b.handleInput(l)
+
+
+b = JT.bot("Kelvin")
+l=""
+while not(l.lower() == "quit"):
+    l = str(input("Enter a command: "))
+    r = b.handleInput(l)
