@@ -1,5 +1,5 @@
 from samplebot.FileManager import FileManager
-import samplebot.Actions
+import samplebot.Actions as Actions
 
 class Rule:
 
@@ -126,6 +126,15 @@ class bot:
         self.rulesManager.writeContent(self.rules)
        # self.rulesManager.writeContent({p.lower(): RuleType+'$'+r}) #CHECK
        # self.rules = self.rulesManager.getDictionary()
+    
+    #very simple helper method
+    @staticmethod
+    def RepresentsInt(s):
+        try:
+            int(s)
+            return True
+        except ValueError:
+            return False
 
     def handleInput(self, r):
         r = r.lower()
