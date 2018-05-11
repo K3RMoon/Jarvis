@@ -118,10 +118,25 @@ class bot:
         else:
             print("Rule unknown")
 
+    def responseHandler(self, response):
+        keys = self.knowledge.keys()
+        responseList = response.split(" ")
+        rindex=-1
+        for x in responseList:
+            rindex+=1
+            if (x[0]=='~'):
+                if (x.split("~"))[1] in keys:
+                    responseList[rindex]=self.knowledge[(x.split("~"))[1]]
+                else:
+                    return str((x.split("~"))[1] + " is not in knowledge")
+        returnable = " ".join(str(e) for e in responseList)
+        return returnable
+
 
     def handleRule(self, rule, params):
         if(rule[0].lower()=="response"):
-            print(rule[1])
+           # print(rule[1])
+            print(self.responseHandler(rule[1]))
         if(rule[0].lower()=="learn"):
             attrName = input(rule[1]+ ": ")
             attrVal = input("enter "+attrName+": ")
@@ -191,7 +206,8 @@ b.addRule("do that ~param ~param", "Action", "Multiply")
 b.addRule("do something else ~param ~param", "Action", "Divide")
 b.addRule("I want to die", "Action", "Joke")
 b.addRule("Roll it", "Action", "RollDice")
-b.forget("name")
+b.addRule("Say my name","Response","~name . You're ~name")
+#b.forget("name")
 
 '''''
 So...what Im thinking es tener ademas de los tipos que ya tenemos de "Response/Action/Learn", anadir uno que sea combination.

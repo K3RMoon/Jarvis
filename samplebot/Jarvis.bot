@@ -10,3 +10,4 @@ do that ~param ~param:Action$Multiply
 do something else ~param ~param:Action$Divide
 i want to die:Action$Joke
 roll it:Action$RollDice
+say my name:Response$~name . You're ~name
