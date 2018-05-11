@@ -44,13 +44,12 @@ def add_rule(name, delimeter, responses):
         return False
 
     r = JT.Rule(name, delimeter, responses)
+    print(r)
     rules.append(r)
     return True
 
 def p_response_rule(p):
     '''response_rule : STRING COLON RESPONSE LP STRING RP SEMICOLON'''
-    print(p[1])
-    print(p[5])
     bot.addRule(p[1], "Response", p[5])
 
 

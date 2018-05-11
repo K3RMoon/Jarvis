@@ -21,6 +21,7 @@ class bot:
         #print (self.rules)
 
 
+
 #Nice, but we need to fix to adhere with project rules with one specific annoying thing...
     #we need to be able to give the input variables as part of the initial input, not just being asked after
     #so we need to tokenize it somehow, separate a specific symbol, like (%) for now [could and maybe should be changed]
