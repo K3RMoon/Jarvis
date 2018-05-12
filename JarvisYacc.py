@@ -5,8 +5,7 @@ from JarvisLex import tokens
 
 variables = []
 rules = []
-currentBot = JT.bot("Kelvin")
-#currentBot = None
+currentBot = None
 thebots = []
 
 def bot_in_use(bot):
@@ -19,6 +18,12 @@ def name_in_use(name):
     for word in variables:
         if word == name:
             return True
+    return False
+
+def find_bot(name):
+    for robot in thebots:
+        if name == robot.name:
+            return robot
     return False
 
 def p_statement(p):

@@ -154,9 +154,9 @@ class bot:
         # this might cause some issues since we separate stuff by spaces
         params = []
         status = self.checkRule(rlist, samelenrules, params)
-        print(status)
+        #print(status)
         r = " ".join(str(e) for e in rlist)
-        print(r)
+        #print(r)
         #if r in self.rules.keys():
         if status:
             rule = str(self.rules[r])
