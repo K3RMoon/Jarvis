@@ -1,6 +1,9 @@
 from samplebot.FileManager import FileManager
 import samplebot.Actions
 
+thebots = {}
+currentBot = None
+
 class Rule:
 
     def __init__(self, name, delimiter, responses):

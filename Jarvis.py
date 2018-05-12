@@ -1,5 +1,6 @@
 from JarvisYacc import parser
 import JarvisTools as JT
+from JarvisYacc import currentBot
 
 
 def execute_lines(lines):
@@ -8,14 +9,16 @@ def execute_lines(lines):
         if not line: continue
         print(parser.parse(line))
 
-
-with open('Test.txt','r') as test:
+code = ""
+with open('Test.txt', 'r') as test:
     for l in test:
-        parser.parse(l)
+        code = code + l
+    print(code)
+    parser.parse(code)
 
 
-b = JT.bot("Kelvin")
+#b = JT.bot("Kelvin")
 l=""
 while not(l.lower() == "quit"):
     l = str(input("Enter a command: "))
-    r = b.handleInput(l)
+    r = currentBot.handleInput(l)
