@@ -18,7 +18,7 @@ class bot:
 
         self.rules[phrase.lower()]= RuleType+'$'+response
         self.rulesManager.writeContent(self.rules)
-        print (self.rules)
+        #print (self.rules)
 
 
 
@@ -35,25 +35,39 @@ class bot:
         trues = 0
         cindex2=-1
         for y in ruleList:
-            cindex2+=1
-            cindex = -1
+            cindex2+=1  #rules with same legth
+            cindex = -1 #arguments per rule
             for x in rule:
                 cindex+= 1
-               # print(x)
-               # print(ruleList[cindex2][cindex])
-                if not (ruleList[cindex2][cindex][0]=='~' or x == ruleList[cindex2][cindex]):
+                #print("rule part")
+                #print(x)
+                #print("other rule part")
+                #print(ruleList[cindex2][cindex])
+                if not (ruleList[cindex2][cindex][0]=='~' or x.lower() == ruleList[cindex2][cindex].lower()):
                     trues = 0
-                    params = []
+                    params[:] = []
+                    #print("trues")
                     #print(trues)
+                    #print("params")
+                    #print(params)
                 else:
                     if(ruleList[cindex2][cindex][0]=='~'):
                         params.append(x)
                         #rule[cindex] = "~param"
                         # Quick fix to allos other parameter names!
-                        rule[cindex] = ""+ruleList[cindex2][cindex]
+                        ##**rule[cindex] = ""+ruleList[cindex2][cindex]
+                        rule[cindex] = "~param"
                     trues+=1
+                    #print("trues")
                     #print(trues)
+                    #print("params")
+                    #print(params)
                     if (trues== rule.__len__()):
+                        cindex3 = -1 #index for fixing ~param
+                        for v in ruleList[cindex2]:
+                            cindex3+=1
+                            if ruleList[cindex2][cindex3]:
+                                rule[cindex3] = ruleList[cindex2][cindex3]
                         return True
         return False
     #very simple helper method
@@ -89,11 +103,14 @@ class bot:
             # this might cause some issues since we separate stuff by spaces
         params = []
         status = self.checkRule(rlist, samelenrules, params)
-        print(status)
+        #print(params)
+        #print(status)
         r = " ".join(str(e) for e in rlist)
-        print(r)
+        #print(r)
         #if r in self.rules.keys():
         if status:
+          #  print("this is R")
+           # print(r)
             rule = str(self.rules[r])
             rContent = rule.partition('$')
             rType = rContent[0]
@@ -101,19 +118,35 @@ class bot:
             self.handleRule([rType, rValue], params)
         else:
             print("Rule unknown")
-        
+
+    def responseHandler(self, response):
+        keys = self.knowledge.keys()
+        responseList = response.split(" ")
+        rindex=-1
+        for x in responseList:
+            rindex+=1
+            if (x[0]=='~'):
+                if (x.split("~"))[1] in keys:
+                    responseList[rindex]=self.knowledge[(x.split("~"))[1]]
+                else:
+                    return str((x.split("~"))[1] + " is not in knowledge")
+        returnable = " ".join(str(e) for e in responseList)
+        return returnable
+
 
     def handleRule(self, rule, params):
         if(rule[0].lower()=="response"):
-            print(rule[1])
+           # print(rule[1])
+            print(self.responseHandler(rule[1]))
         if(rule[0].lower()=="learn"):
             attrName = input(rule[1]+ ": ")
             attrVal = input("enter "+attrName+": ")
             self.learn(attrName, attrVal)
         if(rule[0].lower()=="action"):
-            if(rule[1].lower()=="sum"):
+            if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "substract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
                 #WARNING: maybe will also have to verify that we have the correct ammount of arguments?
                     #tho maybe that should be verified in the yacc. we'll see.
+                #print(params)
                 if not(self.RepresentsInt(params[0]) and self.RepresentsInt(params[1])):
                     print("Illegal Argument Type")
                 else:
@@ -121,7 +154,30 @@ class bot:
                     numb1 = int(params[0])
                     #numb2 = int(input("Enter the second number: "))
                     numb2 = int(params[1])
-                    print("The result is "+str(Actions.Sum(numb1, numb2)))
+                    if(rule[1].lower()=="sum"):
+                        print("The result is "+str(Actions.Sum(numb1, numb2)))
+                    elif(rule[1].lower() == "substract"):
+                        print("The result is "+str(Actions.Substract(numb1, numb2)))
+                    elif (rule[1].lower() == "multiply"):
+                        print("The result is " + str(Actions.Multiply(numb1, numb2)))
+                    elif (rule[1].lower() == "divide"):
+                        print("The result is " + str(Actions.Divide(numb1, numb2)))
+                    elif (rule[1].lower() == "modulo"):
+                        print("The result is " + str(Actions.Modulo(numb1, numb2)))
+                    elif (rule[1].lower() == "power"):
+                        print("The result is " + str(Actions.Power(numb1, numb2)))
+        if (rule[1].lower() == "rolldice"):
+            print("Your dice roll resulted in "+str(Actions.RollDice()))
+        if (rule[1].lower() == "root"):
+            if not (self.RepresentsInt(params[0])):
+                print("Illegal Argument Type")
+            else:
+                numb1 = int(params[0])
+                print("The result is " + str(Actions.Root(numb1)))
+        if (rule[1].lower() == "joke"):
+            print(str (Actions.Joke()))
+        if (rule[1].lower() == "random"):
+            print("You got a "+str(Actions.Random()))
 
     def getAttr(self,attrName):
         return self.knowledge[attrName]
@@ -139,12 +195,20 @@ class bot:
 
 b = bot("Jarvis")
 b.addRule("Hey","Response","Hello")
+b.addRule("why wont you work ~param ~param", "Action", "DIVIDE")
+b.addRule("this is my life ~param ~param", "Action", "DIVIDE")
 b.addRule("How are u?", "Response","I'm doing just fine")
 b.addRule("Learn something", "Learn", "What's should i learn")
 #b.addRule("Add 2 numbers", "Action", "SUM") #outdated sum, no arguments
-b.addRule("Add 2 numbers ~num1 ~num2", "Action", "SUM")
+b.addRule("Add 2 numbers ~param2 ~param5", "Action", "SUM")
 b.addRule("Hi", "Response", "Hey!")
-b.forget("name")
+b.addRule("x ~blahblahblah ~somerandomshit", "Action", "DIVIDE")
+b.addRule("do that ~param ~param", "Action", "Multiply")
+b.addRule("do something else ~param ~param", "Action", "Divide")
+b.addRule("I want to die", "Action", "Joke")
+b.addRule("Roll it", "Action", "RollDice")
+b.addRule("Say my name","Response","~name . You're ~name")
+#b.forget("name")
 
 '''''
 So...what Im thinking es tener ademas de los tipos que ya tenemos de "Response/Action/Learn", anadir uno que sea combination.

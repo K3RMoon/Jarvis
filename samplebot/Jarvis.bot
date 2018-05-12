@@ -1,0 +1,13 @@
+hey:Response$Hello
+why wont you work ~param ~param:Action$DIVIDE
+this is my life ~param ~param:Action$DIVIDE
+how are u?:Response$I'm doing just fine
+learn something:Learn$What's should i learn
+add 2 numbers ~param2 ~param5:Action$SUM
+hi:Response$Hey!
+x ~blahblahblah ~somerandomshit:Action$DIVIDE
+do that ~param ~param:Action$Multiply
+do something else ~param ~param:Action$Divide
+i want to die:Action$Joke
+roll it:Action$RollDice
+say my name:Response$~name . You're ~name
