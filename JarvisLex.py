@@ -81,7 +81,7 @@ t_UNKNOWN = r'\?'
 
 #Rule for Strings
 def t_STRING(t):
-    r'\"[a-zA-Z0-9_?!@#$%&*-+()., \t\n]*\"'
+    r'\"[a-zA-Z0-9_?!@#$%&*-+().~, \t\n]*\"'
     return t
 
 #Left Parenthesis Token

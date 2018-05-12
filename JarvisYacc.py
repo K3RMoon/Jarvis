@@ -35,9 +35,21 @@ def p_response_rule(p):
     '''response_rule : STRING COLON RESPONSE LP STRING RP SEMICOLON'''
     p[0] = [p[1], "Response", p[5]]
 
+def p_learn_rule(p):
+    '''learn_rule : STRING COLON LEARN LP ID RP SEMICOLON'''
+    p[0] = [p[1], "Learn", p[5]]
+
+def p_action_rule(p):
+    '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON'''
+    p[0] = [p[1], "Action", "SUM"]
+
 def p_rules(p):
     '''rules : response_rule
-                | rules response_rule'''
+                | learn_rule
+                | action_rule
+                | rules response_rule
+                | rules action_rule
+                | rules learn_rule'''
     p[0] = []
     if(len(p) > 2):
         p[0] = p[1]
