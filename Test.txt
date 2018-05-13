@@ -13,7 +13,6 @@ Friday{
 "mod ~param ~param" : Action.Modulo(param, param);
 "Give me a fkn number" : Action.Random();
 
-
 }
 Jarvis{
 "Puerco" : Response("Tu madre");

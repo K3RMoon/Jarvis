@@ -40,6 +40,11 @@ def p_learn_rule(p):
     '''learn_rule : STRING COLON LEARN LP ID RP SEMICOLON'''
     p[0] = [p[1], "Learn", p[5]]
 
+def p_forget_rule(p):
+    '''forget_rule : STRING COLON FORGET LP ID RP SEMICOLON'''
+    p[0] = [p[1], "Forget", p[5]]
+
+
 def p_action_rule(p):
     '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON
                     | STRING COLON ACTION PERIOD SUBTRACT LP ID COMMA ID RP SEMICOLON
