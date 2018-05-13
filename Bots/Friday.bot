@@ -1,0 +1,12 @@
+hii:Response$Hey!
+hey:Response$Hello
+sum numbers ~param ~param:Action$SUM
+resta ~param ~param:Action$SUBTRACT
+multiplica ~param ~param:Action$MULTIPLY
+power ~param ~param:Action$POWER
+joke:Action$JOKE
+roll it:Action$ROLLDICE
+root ~param:Action$ROOT
+divide ~param ~param:Action$DIVIDE
+mod ~param ~param:Action$MODULO
+give me a fkn number:Action$RANDOM

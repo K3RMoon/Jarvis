@@ -1,0 +1,19 @@
+
+Friday{
+"Hii" : Response("Hey!");
+"Hey" : Response("Hello");
+"Sum numbers ~param ~param" : Action.Sum(param, param);
+"Resta ~param ~param" : Action.Subtract(param, param);
+"Multiplica ~param ~param" : Action.Multiply(param, param);
+"Power ~param ~param" : Action.Power(param, param);
+"Joke" : Action.Joke();
+"Roll it" : Action.RollDice();
+"Root ~param" : Action.Root(param);
+"Divide ~param ~param" : Action.Divide(param, param);
+"mod ~param ~param" : Action.Modulo(param, param);
+"Give me a fkn number" : Action.Random();
+
+}
+Jarvis{
+"Puerco" : Response("Tu madre");
+}
