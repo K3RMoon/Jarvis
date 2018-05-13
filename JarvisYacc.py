@@ -60,14 +60,16 @@ def p_learn_rule(p):
     '''learn_rule : STRING COLON LEARN LP ID RP SEMICOLON'''
     p[0] = [p[1], "Learn", p[5]]
 
-#Same as response pero con action
-#Aqui hay diferentes posibilidades por cada action, pero en cuestion de lo que hay que mandar pa p[0], seria cambiar
-#El tipo de action que es, sooo hay que verificar que esta en p[5] antes de mandarle al p[0] lo que es
+
+
 def p_forget_rule(p):
     '''forget_rule : STRING COLON FORGET LP ID RP SEMICOLON'''
     p[0] = [p[1], "Forget", p[5]]
 
 
+#Same as response pero con action
+#Aqui hay diferentes posibilidades por cada action, pero en cuestion de lo que hay que mandar pa p[0], seria cambiar
+#El tipo de action que es, sooo hay que verificar que esta en p[5] antes de mandarle al p[0] lo que es
 def p_action_rule(p):
     '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON
                     | STRING COLON ACTION PERIOD SUBTRACT LP ID COMMA ID RP SEMICOLON
