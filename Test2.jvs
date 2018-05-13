@@ -16,6 +16,9 @@ Friday{
 "Divide ~param ~param" : Action.Divide(param, param);
 "mod ~param ~param" : Action.Modulo(param, param);
 "Give me a fkn number" : Action.Random();
+"Learn that my ~param is ~param": Learn(param);
+"Forget ~param":Forget(param);
+"What is my name bro": Response("Your name is"+name);
 
 }
 Jarvis{

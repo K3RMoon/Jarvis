@@ -1,9 +1,9 @@
-hii:Response$"Hey!" 
-hey:Response$"Hello" 
-hello:Response$name 
-wharup:Response$"Hi" name 
-whatup ~param:Response$param "right?" 
-what is my ~param:Response$param 
+hii:Response$Hey! 
+hey:Response$Hello 
+hello:Response$~name 
+wharup:Response$Hi ~name 
+whatup ~param:Response$~param right? 
+what is my ~param:Response$~param 
 sum numbers ~param ~param:Action$SUM
 resta ~param ~param:Action$SUBTRACT
 multiplica ~param ~param:Action$MULTIPLY
@@ -14,3 +14,6 @@ root ~param:Action$ROOT
 divide ~param ~param:Action$DIVIDE
 mod ~param ~param:Action$MODULO
 give me a fkn number:Action$RANDOM
+learn that my ~param is ~param:Learn$param
+forget ~param:Forget$param
+what is my name bro:Response$Your name is ~name 

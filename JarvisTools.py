@@ -4,106 +4,6 @@ from samplebot import Actions
 thebots = {}
 currentBot = None
 
-class Rule:
-
-    def __init__(self, name, delimiter, responses):
-        self.name = name
-        self.delimiter = delimiter
-        self.responses = responses
-
-    def get_name(self):
-        return self.name
-
-    def get_delimiter(self):
-        return self.delimiter
-
-    def get_responses(self):
-        return self.responses
-
-    def set_name(self,name):
-        self.name = name
-
-    def set_delimiter(self, delimiter):
-        self.delimiter = delimiter
-
-    def set_responses(self, responses):
-        self.responses = responses
-
-
-class Response:
-
-    def __init__(self, message):
-        self.message = message
-
-    def get_message(self):
-        return self.message
-
-    def set_message(self, message):
-        self.message = message
-
-
-
-class Variable:
-
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
-
-    def get_name(self):
-        return self.name
-
-    def get_value(self):
-        return self.value
-
-    def set_name(self, name):
-        self.name = name
-
-    def set_value(self, value):
-        self.value = value
-
-
-class Learn:
-
-    def __init__(self, var):
-        self.var = var
-
-    def get_var(self):
-        return self.var
-
-    def set_var(self, var):
-        self.var = var
-
-
-class Forget:
-
-    def __init__(self, var):
-        self.var = var
-
-    def get_var(self):
-        return self.var
-
-    def set_var(self, var):
-        self.var = var
-
-
-class Action:
-
-    def __init__(self, action, parameter):
-        self.action = action
-        self.parameter = parameter
-
-    def get_action(self):
-        return self.action
-
-    def get_parameter(self):
-        return self.parameter
-
-    def set_action(self, action):
-        self.action = action
-
-    def set_parameter(self, parameter):
-        self.parameter = parameter
-
 class bot:
     def __init__(self, name):
         self.name = name
@@ -236,8 +136,8 @@ class bot:
         # keys = self.knowledge.keys()
         responseList = response.split(' ')
         returnable = ""
-        # print(responseList)
-        # print(params)
+        print(responseList)
+        print(params)
         pindex = 0
         for x in responseList:
         #     rindex+=1
@@ -250,7 +150,7 @@ class bot:
             # print(x)
             if(x!=''):
                 vals = x.split(' ')
-                # print(vals)
+                print(vals)
                 
                 for v in vals:
                     # print(v)
@@ -265,33 +165,40 @@ class bot:
                             returnable = (returnable +self.knowledge.get(k))
                     else:
                         if(v!=''):
-                            if(v[0]=='"'):
-                                returnable+=k[1:-1]
-                            else:
+                            if(v[0]=='~'):
+                                k = v[1:]
+                                # print(v[1:])
                                 if(self.knowledge.get(k) == None):
-                                    return k +" is not in my knowledge yet"
+                                        return k +" is not in my knowledge yet"
                                 else:
-                                    returnable = (returnable +self.knowledge.get(k))
+                                    returnable+=self.knowledge.get(k)
+                            #     returnable+=k[1:]
+                            # else:
+                            #     if(v[-1]=='"'):
+                            #         returnable+=k[:-1]
+                            #     else:
+                                    
+                                    
+                            else:
+                                returnable += k
             returnable+=" "
                         
         return returnable
 
 
     def handleRule(self, rule, params, paramDict):
+        # print(rule, params, paramDict)
+        if(rule[0].lower()=="forget"):
+            self.forget(paramDict[0])
+            print(rule, paramDict, params)
         if(rule[0].lower()=="response"):
-            # print(params)
+            # print(params, rule[1])
             print(self.responseHandler(rule[1], params))
         if (rule[0].lower() == "learn"):
             if params.__len__() < 1:
                 print("Invalid Number of Parameters: Illegal Operation")
             else:
-                # attrName = input(rule[1]+ ": ")
-                # attrName = params[0]
-                attrName = str((list(paramDict.keys()))[0])
-                # attrVal = input("enter "+attrName+": ")
-                # attrVal = params[1]
-                attrVal = paramDict.get(attrName)
-                self.learn(attrName, attrVal)
+                self.learn(params[0], params[1])
         if(rule[0].lower()=="action"):
             if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "subtract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
                 if params.__len__() < 2:
