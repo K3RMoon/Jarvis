@@ -2,6 +2,10 @@
 Friday{
 "Hii" : Response("Hey!");
 "Hey" : Response("Hello");
+"Hello" : Response(name);
+"Wharup" : Response("Hi " + name);
+"Whatup ~age" : Response(age + " right?");
+"What is my ~param" : Response(param);
 "Sum numbers ~param ~param" : Action.Sum(param, param);
 "Resta ~param ~param" : Action.Subtract(param, param);
 "Multiplica ~param ~param" : Action.Multiply(param, param);
