@@ -35,14 +35,16 @@ class bot:
         trues = 0
         cindex2=-1
         for y in ruleList:
+           #whos a  print(y)
             cindex2+=1  #rules with same legth
             cindex = -1 #arguments per rule
             for x in rule:
+               # print (rule)
                 cindex+= 1
-                #print("rule part")
-                #print(x)
-                #print("other rule part")
-                #print(ruleList[cindex2][cindex])
+               # print("rule part")
+               # print(x)
+               # print("other rule part")
+               # print(ruleList[cindex2][cindex])
                 if not (ruleList[cindex2][cindex][0]=='~' or x.lower() == ruleList[cindex2][cindex].lower()):
                     trues = 0
                     params[:] = []
@@ -56,7 +58,7 @@ class bot:
                         #rule[cindex] = "~param"
                         # Quick fix to allos other parameter names!
                         ##**rule[cindex] = ""+ruleList[cindex2][cindex]
-                        rule[cindex] = "~param"
+                        #rule[cindex] = "~param"
                     trues+=1
                     #print("trues")
                     #print(trues)
@@ -90,11 +92,11 @@ class bot:
         #print(printme)
         for x in list(self.rules.keys()):
             xlist = (str(x)).split(" ")
-            #print (xlist)
-            #print (xlist.__len__())
+          #  print (xlist)
+         #   print (xlist.__len__())
             if xlist.__len__() == rlen:
                 samelenrules.append(xlist)
-                #print(xlist)
+               # print(xlist)
         #print(samelenrules)
 
         r = r.lower()
@@ -109,8 +111,8 @@ class bot:
         #print(r)
         #if r in self.rules.keys():
         if status:
-          #  print("this is R")
-           # print(r)
+         #   print("this is R")
+          #  print(r)
             rule = str(self.rules[r])
             rContent = rule.partition('$')
             rType = rContent[0]
@@ -208,6 +210,7 @@ b.addRule("do something else ~param ~param", "Action", "Divide")
 b.addRule("I want to die", "Action", "Joke")
 b.addRule("Roll it", "Action", "RollDice")
 b.addRule("Say my name","Response","~name . You're ~name")
+b.addRule("whos a bitch","Response","Youre a bitch ~name Fuck you.")
 #b.forget("name")
 
 '''''

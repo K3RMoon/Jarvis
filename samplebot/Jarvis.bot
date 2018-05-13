@@ -11,3 +11,5 @@ do something else ~param ~param:Action$Divide
 i want to die:Action$Joke
 roll it:Action$RollDice
 say my name:Response$~name . You're ~name
+whos a bitch?:Response$Youre a bitch ~name Fuck you.
+whos a bitch:Response$Youre a bitch ~name Fuck you.
