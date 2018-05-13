@@ -66,6 +66,9 @@ def print_message():
     for bot in thebots:
         print("-" + bot.name)
     print("\n")
+
+
+
 def run_program(name):
 
     code = ""
@@ -77,6 +80,8 @@ def run_program(name):
             parser.parse(code)
     except FileNotFoundError:
         print("File "+name+".jvs doesn't exist")
+        sys.exit()
+    except:
         sys.exit()
 
     print_message()
