@@ -177,7 +177,7 @@ class bot:
                                 paramDict[ruleList[cindex2][cindex3][1:]] = rule[cindex3]
                                 rule[cindex3] = ruleList[cindex2][cindex3]
 
-                                print(""+str(ruleList[cindex2][cindex3][1:])+" is "+paramDict.get(ruleList[cindex2][cindex3][1:]))
+                                #print(""+str(ruleList[cindex2][cindex3][1:])+" is "+paramDict.get(ruleList[cindex2][cindex3][1:]))
                         return True
         return False
     #very simple helper method
@@ -217,12 +217,13 @@ class bot:
         #print(params)
         #print(status)
         r = " ".join(str(e) for e in rlist)
+        r = r.lower()
         #print(r)
         #if r in self.rules.keys():
         if status:
             #  print("this is R")
             # print(r)
-            rule = str(self.rules[r])
+            rule = str(self.rules[r.lower()])
             rContent = rule.partition('$')
             rType = rContent[0]
             rValue = rContent[2]
