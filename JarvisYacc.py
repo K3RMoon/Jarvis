@@ -35,6 +35,18 @@ def p_statement(p):
     p[0] = p[1]
     pass
 
+
+def p_response_exp(p):
+    '''response_exp : STRING
+                    | ID
+                    | response_exp PLUS STRING
+                    | response_exp PLUS ID'''
+    p[0] = []
+    if len(p) > 2:
+        p[0] = p[1]
+        p[0].append(p[3])
+    else:
+        p[0] = [p[1]]
 #---------------------------------------------------------------------------------------------------------------
 
 #RULES:
