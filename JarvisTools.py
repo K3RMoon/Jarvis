@@ -135,6 +135,10 @@ class bot:
     #how does this work? it depends heavily on the ammount of arguments. as in, the ammount of tokens basically
     #it goes comparing token by token, if all (aka the size of ruleList) match, good. once any doesnt match resets to 0.
     def checkRule(self, rule, ruleList, params): #by Herbert, will try to do the new verification here
+        if (ruleList.__len__()==0) :
+            return False
+        if (rule.__len__()==0) :
+            return False
         trues = 0
         cindex2=-1
         for y in ruleList:

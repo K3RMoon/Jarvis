@@ -66,7 +66,10 @@ def p_create_bot(p):
         currentBot = JT.bot(p[1])
         thebots.append(currentBot)
         for rule in p[3]:
-            currentBot.addRule(rule[0], rule[1], rule[2])
+            if ((rule[2][0])=='\"' and (rule[2][(len(rule[2]))])=='\"'):
+                rule[2]=rule[2][1:(len(rule[2])-1)]
+
+            currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule[2])
         currentBot = None
     except:
         print("Error in definition, cannot create bot.")
