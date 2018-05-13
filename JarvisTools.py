@@ -235,7 +235,6 @@ class bot:
     def responseHandler(self, response, params):
         # keys = self.knowledge.keys()
         responseList = response.split(' ')
-        # rindex=-1
         returnable = ""
         # print(responseList)
         # print(params)
@@ -248,26 +247,32 @@ class bot:
         #         else:
         #             return str((x.split("~"))[1] + " is not in knowledge")
         # returnable = " ".join(str(e) for e in responseList)
-
-            if(x!='"'):
-                vals = x.split('"')
+            # print(x)
+            if(x!=''):
+                vals = x.split(' ')
                 # print(vals)
                 
-                if(len(vals)>1):
-                    for v in vals:
-                        if(v!=''):
-                            # print(v)
-                            returnable = returnable +v+" "
-                else:
-                    if(len(vals)==1):
-                        k = vals[0]
-                        if(k=='param'):
-                            k = params[pindex]
-                            pindex+=1
+                for v in vals:
+                    # print(v)
+                    # returnable = returnable +v
+                    k = v
+                    if(k=='param'):
+                        k = params[pindex]
+                        pindex+=1
                         if(self.knowledge.get(k) == None):
                             return k +" is not in my knowledge yet"
-                        # if(k!=''):
-                        returnable = (returnable +self.knowledge.get(k)+" ")
+                        else:
+                            returnable = (returnable +self.knowledge.get(k))
+                    else:
+                        if(v!=''):
+                            if(v[0]=='"'):
+                                returnable+=k[1:-1]
+                            else:
+                                if(self.knowledge.get(k) == None):
+                                    return k +" is not in my knowledge yet"
+                                else:
+                                    returnable = (returnable +self.knowledge.get(k))
+            returnable+=" "
                         
         return returnable
 
