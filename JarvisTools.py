@@ -107,8 +107,8 @@ class Action:
 class bot:
     def __init__(self, name):
         self.name = name
-        self.rulesManager = FileManager(name+".bot")#rules files
-        self.fileManager = FileManager(name+"knowledge.bot") #knowledge file
+        self.rulesManager = FileManager("Bots\\" +name+".bot")#rules files
+        self.fileManager = FileManager("Bots\\"+name+"knowledge.bot") #knowledge file
         self.rules = self.rulesManager.getDictionary()
         self.knowledge = self.fileManager.getDictionary()
         # print(self.knowledge)

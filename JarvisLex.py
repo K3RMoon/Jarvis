@@ -14,25 +14,25 @@ actions = {
     'Root': 'ROOT',
     'Joke': 'JOKE',
     #will likely trim down by removing file management actions
-    'Save': 'SAVE',
-    'Delete': 'DELETE',
-    'Update': 'UPDATE',
-    'Move': 'MOVE',
+    #'Save': 'SAVE',
+    #'Delete': 'DELETE',
+    #'Update': 'UPDATE',
+    #'Move': 'MOVE',
     #SearchImage may also be removed
-    'SearchImage': 'SEARCHIMAGE',
+    #'SearchImage': 'SEARCHIMAGE',
 
 }
 
 reserved = {
-    'Create': 'CREATE',
-    'rules': 'RULES',
+    #'Create': 'CREATE',
+    #'rules': 'RULES',
     'Response': 'RESPONSE',
     'Learn': 'LEARN',
     'Forget': 'FORGET',
     'Action': 'ACTION',
-    'or': 'OR',
-    'and': 'AND',
-    'not': 'NOT',
+    #'or': 'OR',
+    #'and': 'AND',
+    #'not': 'NOT',
 
 }
 
@@ -54,7 +54,7 @@ tokens = [
     'COMMA',
     'SEMICOLON',
     'COLON',
-    'ADD',
+    #'ADD',
    # 'QUOTES', #removed because Kelvin
     'PERIOD',
     'PLUS'
@@ -107,7 +107,7 @@ t_SEMICOLON = r';'
 t_COLON = r':'
 
 #Address Symbol Token
-t_ADD = r'@'
+#t_ADD = r'@'
 
 #QUOTES = r'\"' #LIKELY NEEDS TO BE REMOVED BECAUSE ALREADY IMPLEMENTED.
 
@@ -118,13 +118,13 @@ t_PERIOD = r'\.'
 t_PLUS = r'\+'
 
 #Or Token
-t_OR = r'or'
+#t_OR = r'or'
 
 #And Token
-t_AND = r'and'
+#t_AND = r'and'
 
 #Not Token
-t_NOT = r'not'
+#t_NOT = r'not'
 
 #Ignored Characters
 t_ignore = '\t \n'
