@@ -2,56 +2,78 @@ import ply.yacc as yacc
 import JarvisTools as JT
 from JarvisLex import tokens
 
+
 variables = []
 rules = []
-bot = JT.bot("Kelvin")
+currentBot = None
+thebots = []
 
-def variable_in_use(name):
-    for variable in variables:
-        if variable.get_name == name:
+def bot_in_use(bot):
+    for robot in thebots:
+        if robot.name == bot.name:
             return True
-
     return False
 
-def rule_in_use(name):
-    for rule in rules:
-        if rule.get_name == name:
+def name_in_use(name):
+    for word in variables:
+        if word == name:
             return True
-
     return False
 
-def search_variable(name):
-    for variable in variables:
-        if variable.get_name == name:
-            return variable
+def find_bot(name):
+    for robot in thebots:
+        if name == robot.name:
+            return robot
+    return False
 
-
-def search_rule(name):
-    for rule in rules:
-        if rule.get_name == name:
-            return rule
-
-def add_variable(name, value):
-    if variable_in_use(name):
-        print("Error: Duplicate Variable: " + name) #We might not need to print it directly TODO: Change to Error
-
-    v = JT.Variable(name, value)
-    variables.append(v)
-
-def add_rule(name, delimeter, responses):
-    if rule_in_use(name):
-        print("Error: Duplicate Rule: " + name) #We might not need to print directly TODO: Change to Error
-        return False
-
-    r = JT.Rule(name, delimeter, responses)
-    print(r)
-    rules.append(r)
-    return True
+def p_statement(p):
+    '''statement : create_bot'''
+    p[0] = p[1]
+    pass
 
 def p_response_rule(p):
     '''response_rule : STRING COLON RESPONSE LP STRING RP SEMICOLON'''
-    bot.addRule(p[1], "Response", p[5])
+    p[0] = [p[1], "Response", p[5]]
 
+def p_learn_rule(p):
+    '''learn_rule : STRING COLON LEARN LP ID RP SEMICOLON'''
+    p[0] = [p[1], "Learn", p[5]]
+
+def p_action_rule(p):
+    '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON'''
+    p[0] = [p[1], "Action", "SUM"]
+
+def p_rules(p):
+    '''rules : response_rule
+                | learn_rule
+                | action_rule
+                | rules response_rule
+                | rules action_rule
+                | rules learn_rule'''
+    p[0] = []
+    if(len(p) > 2):
+        p[0] = p[1]
+        p[0].append(p[2])
+    else:
+        p[0] = [p[1]]
+
+def p_create_bot(p):
+    '''create_bot : ID LC rules RC'''
+    try:
+        if bot_in_use(p[1]):
+            print('Error: Bot ' + p[1] + ' already exists.')
+            return
+        currentBot = JT.bot(p[1])
+        thebots.append(currentBot)
+        for rule in p[3]:
+            currentBot.addRule(rule[0], rule[1], rule[2])
+        currentBot = None
+    except:
+        print("Error in definition, cannot create bot.")
+
+def p_error(p):
+    print("ERROR: ")
+    print(p)
 
 # Build the parser
 parser = yacc.yacc()

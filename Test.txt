@@ -1,0 +1,6 @@
+
+Friday{
+"Hii" : Response("Hey!");
+"Hey" : Response("Hello");
+"Sum numbers ~param1 ~param2 " : Action.Sum(param1, param2);
+}

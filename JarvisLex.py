@@ -43,10 +43,10 @@ reserved.update(actions)
 
 
 tokens = [
-    'NUMBER',   #done
-    'UNKNOWN',  #done
-    'ID',       #done
-    'STRING',   #done
+    'NUMBER',
+    'UNKNOWN',
+    'ID',
+    'STRING',
     'LP',
     'RP',
     'LC',
@@ -57,10 +57,7 @@ tokens = [
     'ADD',
    # 'QUOTES', #removed because Kelvin
     'PERIOD',
-    'PLUS',
-    #'OR',
-    #'AND',
-    #'NOT'
+    'PLUS'
 
 ] + list(reserved.values())
 
@@ -74,15 +71,17 @@ def t_NUMBER(t):
 # Rule for Variables and Reserved Words
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = reserved.get(t.value, 'ID') #Check for reserved words
+    if t.value in reserved:
+        t.type = reserved[t.value]
     return t
+
 
 #Unknown Character Token
 t_UNKNOWN = r'\?'
 
 #Rule for Strings
 def t_STRING(t):
-    r'\"[a-zA-Z0-9_?!@#$%&*-+()., \t\n]*\"'
+    r'\"[a-zA-Z0-9_?!@#$%&*-+().~, \t\n]*\"'
     return t
 
 #Left Parenthesis Token
@@ -92,13 +91,13 @@ t_LP = r'\('
 t_RP = r'\)'
 
 #Left Curly Token
-t_LC = r'{'
+t_LC = r'\{'
 
 #Right Curly Token
-t_RC = r'}'
+t_RC = r'\}'
 
 #Comma Curly Token
-t_COMMA = r','
+t_COMMA = r'\,'
 
 #Semicolon Token
 t_SEMICOLON = r';'
@@ -127,7 +126,7 @@ t_AND = r'and'
 t_NOT = r'not'
 
 #Ignored Characters
-t_ignore = ' \t\n'
+t_ignore = '\t \n'
 
 #Error
 def t_error(t):
