@@ -8,11 +8,15 @@ import sys
 def run_program(name):
 
     code = ""
-    with open(name + '.jvs', 'r') as test:
-        for l in test:
-            code = code + l
-        print(code)
-        parser.parse(code)
+    try:
+        with open(name + '.jvs', 'r') as test:
+            for l in test:
+                code = code + l
+            print(code)
+            parser.parse(code)
+    except FileNotFoundError:
+        print("File "+name+".jvs doesn't exist")
+        sys.exit()
 
 
 
