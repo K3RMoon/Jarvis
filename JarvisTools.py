@@ -262,7 +262,7 @@ class bot:
                 attrVal = paramDict.get(attrName)
                 self.learn(attrName, attrVal)
         if(rule[0].lower()=="action"):
-            if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "substract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
+            if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "subtract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
                 if params.__len__() < 2:
                     print("Invalid Number of Parameters: Illegal Operation")
                 else:
@@ -278,7 +278,7 @@ class bot:
                         numb2 = int(params[1])
                         if(rule[1].lower()=="sum"):
                             print("The result is "+str(Actions.Sum(numb1, numb2)))
-                        elif(rule[1].lower() == "substract"):
+                        elif(rule[1].lower() == "subtract"):
                             print("The result is "+str(Actions.Substract(numb1, numb2)))
                         elif (rule[1].lower() == "multiply"):
                             print("The result is " + str(Actions.Multiply(numb1, numb2)))

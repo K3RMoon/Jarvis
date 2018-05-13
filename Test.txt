@@ -2,7 +2,8 @@
 Friday{
 "Hii" : Response("Hey!");
 "Hey" : Response("Hello");
-"Sum numbers ~param1 ~param2" : Action.Sum(param1, param2);
+"Sum numbers ~param ~param" : Action.Sum(param, param);
+"Resta ~param ~param" : Action.Subtract(param, param);
 }
 Jarvis{
 "Puerco" : Response("Tu madre");
