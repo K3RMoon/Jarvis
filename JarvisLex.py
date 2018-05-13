@@ -84,6 +84,7 @@ def t_STRING(t):
     r'\"[a-zA-Z0-9_?!@#$%&*-+().~, \t\n]*\"'
     return t
 
+
 #Left Parenthesis Token
 t_LP = r'\('
 

@@ -10,7 +10,7 @@ thebots = []
 
 def bot_in_use(bot):
     for robot in thebots:
-        if robot.name == bot.name:
+        if robot.name == bot:
             return True
     return False
 
@@ -27,7 +27,8 @@ def find_bot(name):
     return False
 
 def p_statement(p):
-    '''statement : create_bot'''
+    '''statement : create_bot
+                    | statement create_bot'''
     p[0] = p[1]
     pass
 
@@ -40,8 +41,13 @@ def p_learn_rule(p):
     p[0] = [p[1], "Learn", p[5]]
 
 def p_action_rule(p):
-    '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON'''
-    p[0] = [p[1], "Action", "SUM"]
+    '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD SUBTRACT LP ID COMMA ID RP SEMICOLON'''
+    if p[5] == "Sum":
+        p[0] = [p[1], "Action", "SUM"]
+    elif p[5] == "Subtract":
+        p[0] = [p[1], "Action", "SUBTRACT"]
+
 
 def p_rules(p):
     '''rules : response_rule
@@ -66,7 +72,7 @@ def p_create_bot(p):
         currentBot = JT.bot(p[1])
         thebots.append(currentBot)
         for rule in p[3]:
-            if ((rule[2][0])=='\"' and (rule[2][(len(rule[2]))])=='\"'):
+            if ((rule[2][0])=='\"' and (rule[2][(len(rule[2])-1)])=='\"'):
                 rule[2]=rule[2][1:(len(rule[2])-1)]
 
             currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule[2])
