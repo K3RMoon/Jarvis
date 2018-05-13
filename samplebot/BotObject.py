@@ -140,10 +140,15 @@ class bot:
         if(rule[0].lower()=="response"):
            # print(rule[1])
             print(self.responseHandler(rule[1]))
-        if(rule[0].lower()=="learn"):
-            attrName = input(rule[1]+ ": ")
-            attrVal = input("enter "+attrName+": ")
-            self.learn(attrName, attrVal)
+        if (rule[0].lower() == "learn"):
+            if params.__len__() < 2:
+                print("Invalid Number of Parameters: Illegal Operation")
+            else:
+                # attrName = input(rule[1]+ ": ")
+                attrName = params[0]
+                # attrVal = input("enter "+attrName+": ")
+                attrVal = params[1]
+                self.learn(attrName, attrVal)
         if(rule[0].lower()=="action"):
             if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "substract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
                 #WARNING: maybe will also have to verify that we have the correct ammount of arguments?
@@ -196,6 +201,7 @@ class bot:
     
 
 b = bot("Jarvis")
+b.addRule("About time you learn ~varName ~varValue","LEARN","")
 b.addRule("Hey","Response","Hello")
 b.addRule("why wont you work ~param ~param", "Action", "DIVIDE")
 b.addRule("this is my life ~param ~param", "Action", "DIVIDE")

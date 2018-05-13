@@ -60,16 +60,18 @@ def p_rules(p):
 def p_create_bot(p):
     '''create_bot : ID LC rules RC'''
     try:
+    #if True:
         if bot_in_use(p[1]):
             print('Error: Bot ' + p[1] + ' already exists.')
             return
         currentBot = JT.bot(p[1])
         thebots.append(currentBot)
         for rule in p[3]:
-            if ((rule[2][0])=='\"' and (rule[2][(len(rule[2]))])=='\"'):
-                rule[2]=rule[2][1:(len(rule[2])-1)]
+            rule2 = rule[2]
+            if ((rule[2][0])=='\"' and (rule[2][(len(rule[2])-1)])=='\"'):
+                rule2 = rule[2][1:(len(rule[2])-1)]
 
-            currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule[2])
+            currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule2)
         currentBot = None
     except:
         print("Error in definition, cannot create bot.")

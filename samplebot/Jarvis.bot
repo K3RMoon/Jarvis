@@ -13,3 +13,4 @@ roll it:Action$RollDice
 say my name:Response$~name . You're ~name
 whos a bitch?:Response$Youre a bitch ~name Fuck you.
 whos a bitch:Response$Youre a bitch ~name Fuck you.
+about time you learn ~varname ~varvalue:LEARN$
