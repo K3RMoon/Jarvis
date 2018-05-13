@@ -35,6 +35,18 @@ def p_statement(p):
     p[0] = p[1]
     pass
 
+
+def p_response_exp(p):
+    '''response_exp : STRING
+                    | ID
+                    | response_exp PLUS STRING
+                    | response_exp PLUS ID'''
+    p[0] = []
+    if len(p) > 2:
+        p[0] = p[1]
+        p[0].append(p[3])
+    else:
+        p[0] = [p[1]]
 #---------------------------------------------------------------------------------------------------------------
 
 #RULES:
@@ -48,10 +60,29 @@ def p_statement(p):
 #Pero hay que a~adir casos como Response(name) //Una variable
 #Y Response("Hello " + name) <- este va a ser un poco mas tricky etc
 def p_response_rule(p):
-    '''response_rule : STRING COLON RESPONSE LP STRING RP SEMICOLON'''
-    p[0] = [p[1], "Response", p[5]] #p[0] es lo que devuelve, y quiero devolver un array con los parametros que addRule
+    '''response_rule : STRING COLON RESPONSE LP response_exp RP SEMICOLON'''
+    print("test", p[5])
+    resu = ""
+    for part in p[5]:
+        print (part)
+        resu+=part+" "
+    print(resu)
+
+    p[0] = [p[1], "Response", resu] #p[0] es lo que devuelve, y quiero devolver un array con los parametros que addRule
                                         #necesita, en este caso el String del usuario (p[1]), la palabra 'Response', y el String
-                                        # de contestacion (p[5]
+#                                         # de contestacion (p[5]
+# def p_response_rule1(p):
+#     '''response_rule : STRING COLON RESPONSE LP ID RP SEMICOLON'''
+#     # name =
+#     p[0] = [p[1], "Response", p[5]]
+# def p_response_rule2(p):
+#     '''response_rule : STRING COLON RESPONSE LP STRING PLUS ID RP SEMICOLON'''
+#     p[0] = [p[1], "Response", p[5]+" "+ p[7]]
+# def p_response_rule3(p):
+#     '''response_rule : STRING COLON RESPONSE LP ID PLUS STRING RP SEMICOLON'''
+#     p[0] = [p[1], "Response", p[5]+" "+ p[7]]
+
+
 
 
 

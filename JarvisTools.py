@@ -201,11 +201,11 @@ class bot:
         for x in list(self.rules.keys()):
             xlist = (str(x)).split(" ")
             #print (xlist)
-            #print (xlist.__len__())
+            # print (xlist.__len__())
             if xlist.__len__() == rlen:
                 samelenrules.append(xlist)
                 #print(xlist)
-        #print(samelenrules)
+        # print(samelenrules)
 
         #checks if rule is valid among same length rules.
         #WARNING OF POSSIBLE ISSUES: what if the input we want is a long string? as in, more than one token?
@@ -224,6 +224,7 @@ class bot:
             # print(r)
             rule = str(self.rules[r.lower()])
             rContent = rule.partition('$')
+            # print(rContent)
             rType = rContent[0]
             rValue = rContent[2]
             self.handleRule([rType, rValue], params, paramDict)
@@ -231,25 +232,55 @@ class bot:
             if(r!='quit'):
                 print("Rule unknown")
 
-    def responseHandler(self, response):
-        keys = self.knowledge.keys()
-        responseList = response.split(" ")
-        rindex=-1
+    def responseHandler(self, response, params):
+        # keys = self.knowledge.keys()
+        responseList = response.split(' ')
+        returnable = ""
+        # print(responseList)
+        # print(params)
+        pindex = 0
         for x in responseList:
-            rindex+=1
-            if (x[0]=='~'):
-                if (x.split("~"))[1] in keys:
-                    responseList[rindex]=self.knowledge[(x.split("~"))[1]]
-                else:
-                    return str((x.split("~"))[1] + " is not in knowledge")
-        returnable = " ".join(str(e) for e in responseList)
+        #     rindex+=1
+        #     if (x[0]=='~'):
+        #         if (x.split("~"))[1] in keys:
+        #             responseList[rindex]=self.knowledge[(x.split("~"))[1]]
+        #         else:
+        #             return str((x.split("~"))[1] + " is not in knowledge")
+        # returnable = " ".join(str(e) for e in responseList)
+            # print(x)
+            if(x!=''):
+                vals = x.split(' ')
+                # print(vals)
+                
+                for v in vals:
+                    # print(v)
+                    # returnable = returnable +v
+                    k = v
+                    if(k=='param'):
+                        k = params[pindex]
+                        pindex+=1
+                        if(self.knowledge.get(k) == None):
+                            return k +" is not in my knowledge yet"
+                        else:
+                            returnable = (returnable +self.knowledge.get(k))
+                    else:
+                        if(v!=''):
+                            if(v[0]=='"'):
+                                returnable+=k[1:-1]
+                            else:
+                                if(self.knowledge.get(k) == None):
+                                    return k +" is not in my knowledge yet"
+                                else:
+                                    returnable = (returnable +self.knowledge.get(k))
+            returnable+=" "
+                        
         return returnable
 
 
     def handleRule(self, rule, params, paramDict):
         if(rule[0].lower()=="response"):
-            # print(rule[1])
-            print(self.responseHandler(rule[1]))
+            # print(params)
+            print(self.responseHandler(rule[1], params))
         if (rule[0].lower() == "learn"):
             if params.__len__() < 1:
                 print("Invalid Number of Parameters: Illegal Operation")

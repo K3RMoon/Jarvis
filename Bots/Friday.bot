@@ -1,5 +1,9 @@
-hii:Response$Hey!
-hey:Response$Hello
+hii:Response$"Hey!" 
+hey:Response$"Hello" 
+hello:Response$name 
+wharup:Response$"Hi" name 
+whatup ~param:Response$param "right?" 
+what is my ~param:Response$param 
 sum numbers ~param ~param:Action$SUM
 resta ~param ~param:Action$SUBTRACT
 multiplica ~param ~param:Action$MULTIPLY
