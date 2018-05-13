@@ -42,11 +42,36 @@ def p_learn_rule(p):
 
 def p_action_rule(p):
     '''action_rule : STRING COLON ACTION PERIOD SUM LP ID COMMA ID RP SEMICOLON
-                    | STRING COLON ACTION PERIOD SUBTRACT LP ID COMMA ID RP SEMICOLON'''
+                    | STRING COLON ACTION PERIOD SUBTRACT LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD MULTIPLY LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD POWER LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD JOKE LP RP SEMICOLON
+                    | STRING COLON ACTION PERIOD ROLLDICE LP RP SEMICOLON
+                    | STRING COLON ACTION PERIOD ROOT LP ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD DIVIDE LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD MODULO LP ID COMMA ID RP SEMICOLON
+                    | STRING COLON ACTION PERIOD RANDOM LP RP SEMICOLON'''
+
     if p[5] == "Sum":
         p[0] = [p[1], "Action", "SUM"]
     elif p[5] == "Subtract":
         p[0] = [p[1], "Action", "SUBTRACT"]
+    elif p[5] == "Multiply":
+        p[0] = [p[1], "Action", "MULTIPLY"]
+    elif p[5] == "Power":
+        p[0] = [p[1], "Action", "POWER"]
+    elif p[5] == "Joke":
+        p[0] = [p[1], "Action", "JOKE"]
+    elif p[5] == "RollDice":
+        p[0] = [p[1], "Action", "ROLLDICE"]
+    elif p[5] == "Root":
+        p[0] = [p[1], "Action", "ROOT"]
+    elif p[5] == "Divide":
+        p[0] = [p[1], "Action", "DIVIDE"]
+    elif p[5] == "Modulo":
+        p[0] = [p[1], "Action", "MODULO"]
+    elif p[5] == "Random":
+        p[0] = [p[1], "Action", "RANDOM"]
 
 
 def p_rules(p):

@@ -1,8 +1,8 @@
+# coding: utf-8
 import math
 import random
 from random import randint
-def RollDice():
-    return random.randint(1,6)
+
 def Sum(a,b):
     return a+b
 def Substract(a,b):
@@ -22,7 +22,7 @@ def Root (a):
 def Joke():
     return random.choice(jokes)
 def Random():
-    return random.randint()
+    return random.randint(1,10000)
 jokes = [
     "What did the dog say after a long day at work? Today was ruff.",
     "Knock, knock.\nWho’s there?\nKanye.\nKanye who?\nKanye believe it? I tell jokes too!",

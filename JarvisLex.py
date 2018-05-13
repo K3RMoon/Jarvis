@@ -9,7 +9,7 @@ actions = {
     'Multiply': 'MULTIPLY',
     'Divide': 'DIVIDE',
     'Subtract': 'SUBTRACT',
-    'Modulo': 'Modulo',
+    'Modulo': 'MODULO',
     'Power': 'POWER',
     'Root': 'ROOT',
     'Joke': 'JOKE',
