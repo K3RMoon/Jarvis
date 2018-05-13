@@ -31,7 +31,10 @@ class bot:
 
     #how does this work? it depends heavily on the ammount of arguments. as in, the ammount of tokens basically
     #it goes comparing token by token, if all (aka the size of ruleList) match, good. once any doesnt match resets to 0.
-    def checkRule(self, rule, ruleList, params): #by Herbert, will try to do the new verification here
+    def checkRule(self, rule, ruleList, params, paramDict): #by Herbert, will try to do the new verification here
+        ##
+        #paramDict = {}
+        ##
         trues = 0
         cindex2=-1
         for y in ruleList:
@@ -64,12 +67,16 @@ class bot:
                     #print(trues)
                     #print("params")
                     #print(params)
+                    #changes the specific parts with ~params to the format
                     if (trues== rule.__len__()):
                         cindex3 = -1 #index for fixing ~param
                         for v in ruleList[cindex2]:
                             cindex3+=1
-                            if ruleList[cindex2][cindex3]:
+                            if ruleList[cindex2][cindex3][0]=='~':
+                                paramDict[ruleList[cindex2][cindex3][1:]] = rule[cindex3]
                                 rule[cindex3] = ruleList[cindex2][cindex3]
+
+                                print(""+str(ruleList[cindex2][cindex3][1:])+" is "+paramDict.get(ruleList[cindex2][cindex3][1:]))
                         return True
         return False
     #very simple helper method
@@ -104,7 +111,8 @@ class bot:
         #WARNING OF POSSIBLE ISSUES: what if the input we want is a long string? as in, more than one token?
             # this might cause some issues since we separate stuff by spaces
         params = []
-        status = self.checkRule(rlist, samelenrules, params)
+        paramDict = {}
+        status = self.checkRule(rlist, samelenrules, params, paramDict)
         #print(params)
         #print(status)
         r = " ".join(str(e) for e in rlist)
@@ -117,7 +125,7 @@ class bot:
             rContent = rule.partition('$')
             rType = rContent[0]
             rValue = rContent[2]
-            self.handleRule([rType, rValue], params)
+            self.handleRule([rType, rValue], params, paramDict)
         else:
             print("Rule unknown")
 
@@ -136,18 +144,20 @@ class bot:
         return returnable
 
 
-    def handleRule(self, rule, params):
+    def handleRule(self, rule, params, paramDict):
         if(rule[0].lower()=="response"):
            # print(rule[1])
             print(self.responseHandler(rule[1]))
         if (rule[0].lower() == "learn"):
-            if params.__len__() < 2:
+            if params.__len__() < 1:
                 print("Invalid Number of Parameters: Illegal Operation")
             else:
                 # attrName = input(rule[1]+ ": ")
-                attrName = params[0]
+                # attrName = params[0]
+                attrName = str((list(paramDict.keys()))[0])
                 # attrVal = input("enter "+attrName+": ")
-                attrVal = params[1]
+                # attrVal = params[1]
+                attrVal = paramDict.get(attrName)
                 self.learn(attrName, attrVal)
         if(rule[0].lower()=="action"):
             if(rule[1].lower()=="multiply" or rule[1].lower()=="sum" or rule[1].lower() == "substract" or rule[1].lower() == "divide" or rule[1].lower() == "modulo" or rule[1].lower() == "power"):
@@ -201,7 +211,7 @@ class bot:
     
 
 b = bot("Jarvis")
-b.addRule("About time you learn ~varName ~varValue","LEARN","")
+b.addRule("About time you learn ~varName","LEARN","")
 b.addRule("Hey","Response","Hello")
 b.addRule("why wont you work ~param ~param", "Action", "DIVIDE")
 b.addRule("this is my life ~param ~param", "Action", "DIVIDE")
@@ -216,6 +226,9 @@ b.addRule("do something else ~param ~param", "Action", "Divide")
 b.addRule("I want to die", "Action", "Joke")
 b.addRule("Roll it", "Action", "RollDice")
 b.addRule("Say my name","Response","~name . You're ~name")
+
+b.addRule("~Bastard is the one that made me implement this","Learn","")
+
 b.addRule("whos a bitch","Response","Youre a bitch ~name Fuck you.")
 #b.forget("name")
 
