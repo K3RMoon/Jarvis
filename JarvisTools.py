@@ -136,8 +136,8 @@ class bot:
         # keys = self.knowledge.keys()
         responseList = response.split(' ')
         returnable = ""
-        print(responseList)
-        print(params)
+        # print(responseList)
+        # print(params)
         pindex = 0
         for x in responseList:
         #     rindex+=1
@@ -150,7 +150,7 @@ class bot:
             # print(x)
             if(x!=''):
                 vals = x.split(' ')
-                print(vals)
+                # print(vals)
                 
                 for v in vals:
                     # print(v)
