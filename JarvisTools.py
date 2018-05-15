@@ -1,5 +1,5 @@
-from samplebot.FileManager import FileManager
-from samplebot import Actions
+from Helpers.FileManager import FileManager
+from Helpers import Actions
 
 thebots = {}
 currentBot = None
