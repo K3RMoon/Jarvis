@@ -53,22 +53,23 @@ class bot:
                 if not (ruleList[cindex2][cindex][0]=='~' or x.lower() == ruleList[cindex2][cindex].lower()):
                     trues = 0
                     params[:] = []
-                    #print("trues")
-                    #print(trues)
-                    #print("params")
-                    #print(params)
+                 #   print("trues")
+                 #   print(trues)
+                 #   print("params")
+                 #   print(params)
+                    break
                 else:
                     if(ruleList[cindex2][cindex][0]=='~'):
                         params.append(x)
-                        #rule[cindex] = "~param"
+                        rule[cindex] = "~param"
                         # Quick fix to allos other parameter names!
                         ##**rule[cindex] = ""+ruleList[cindex2][cindex]
                         rule[cindex] = "~param"
                     trues+=1
-                    #print("trues")
-                    #print(trues)
-                    #print("params")
-                    #print(params)
+                  #  print("trues")
+                  #  print(trues)
+                  #  print("params")
+                  #  print(params)
                     if (trues== rule.__len__()):
                         cindex3 = -1 #index for fixing ~param
                         for v in ruleList[cindex2]:
@@ -120,8 +121,9 @@ class bot:
         #print(r)
         #if r in self.rules.keys():
         if status:
-            #  print("this is R")
-            # print(r)
+           # print("this is R")
+           # print(r)
+           # print(r.lower())
             rule = str(self.rules[r.lower()])
             rContent = rule.partition('$')
             # print(rContent)
@@ -136,8 +138,8 @@ class bot:
         # keys = self.knowledge.keys()
         responseList = response.split(' ')
         returnable = ""
-        print(responseList)
-        print(params)
+        #print(responseList)
+        #print(params)
         pindex = 0
         for x in responseList:
         #     rindex+=1
@@ -150,7 +152,7 @@ class bot:
             # print(x)
             if(x!=''):
                 vals = x.split(' ')
-                print(vals)
+                #print(vals)
                 
                 for v in vals:
                     # print(v)
