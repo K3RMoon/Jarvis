@@ -27,8 +27,14 @@ jokes = [
     "What did the dog say after a long day at work? Today was ruff.",
     "Knock, knock.\nWho’s there?\nKanye.\nKanye who?\nKanye believe it? I tell jokes too!",
     "What do you call a can opener that doesn’t work? A can’t opener.",
-    "Why can’t you trust an atom? Because they make up literally everything."
-]
+    "Why can’t you trust an atom? Because they make up literally everything.",
+    "Kelvin",
+    "What's the object-oriented way to become wealthy?\nInheritance",
+    "Why did the programmer quit his job?\nBecause he didn't get arrays.",
+    "0 is false and 1 is true, right?\n1",
+    "Why do Java programmers have to wear glasses?\nBecause they don't C#"
+    ]
+
 
 '''
 RollDice()
