@@ -8,19 +8,19 @@ Friday{
 "What is my ~param" : Response(param);
 "Sum numbers ~param ~param" : Action.Sum(param, param);
 "Resta ~param ~param" : Action.Subtract(param, param);
-"Multiplica ~num1 ~num2" : Action.Multiply(num1, num2);
+"Multiplica ~param ~param" : Action.Multiply(num1, num2);
 "Power ~param ~param" : Action.Power(param, param);
 "tell me a Joke" : Action.Joke();
 "Roll it" : Action.RollDice();
 "Root ~param" : Action.Root(param);
 "Divide ~param ~param" : Action.Divide(param, param);
 "mod ~param ~param" : Action.Modulo(param, param);
-"Give me a fkn number" : Action.Random();
+"Give me a number" : Action.Random();
 "Learn that my ~param is ~param": Learn(param);
 "Forget ~param":Forget(param);
 "What is my name bro": Response("Your name is"+name);
 
 }
 Jarvis{
-"Puerco" : Response("Tu madre");
+"I want to die" : Action.Joke();
 }
