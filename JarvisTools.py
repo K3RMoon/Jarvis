@@ -11,7 +11,6 @@ class bot:
         self.fileManager = FileManager("Bots\\"+name+"knowledge.bot") #knowledge file
         self.rules = self.rulesManager.getDictionary()
         self.knowledge = self.fileManager.getDictionary()
-        # print(self.knowledge)
 
     def learn(self, attrName, attr):
         self.knowledge[attrName] = attr #allows overwrite
@@ -113,18 +112,13 @@ class bot:
         params = []
         paramDict = {}
         status = self.checkRule(rlist, samelenrules, params, paramDict)
-        #print(params)
-        #print(status)
+
         r = " ".join(str(e) for e in rlist)
         r = r.lower()
-        #print(r)
-        #if r in self.rules.keys():
+
         if status:
-            #  print("this is R")
-            # print(r)
             rule = str(self.rules[r.lower()])
             rContent = rule.partition('$')
-            # print(rContent)
             rType = rContent[0]
             rValue = rContent[2]
             self.handleRule([rType, rValue], params, paramDict)
@@ -133,28 +127,14 @@ class bot:
                 print("Rule unknown")
 
     def responseHandler(self, response, params):
-        # keys = self.knowledge.keys()
         responseList = response.split(' ')
         returnable = ""
-        # print(responseList)
-        # print(params)
         pindex = 0
         for x in responseList:
-        #     rindex+=1
-        #     if (x[0]=='~'):
-        #         if (x.split("~"))[1] in keys:
-        #             responseList[rindex]=self.knowledge[(x.split("~"))[1]]
-        #         else:
-        #             return str((x.split("~"))[1] + " is not in knowledge")
-        # returnable = " ".join(str(e) for e in responseList)
-            # print(x)
             if(x!=''):
                 vals = x.split(' ')
                 # print(vals)
-                
                 for v in vals:
-                    # print(v)
-                    # returnable = returnable +v
                     k = v
                     if(k=='param'):
                         k = params[pindex]
@@ -164,39 +144,29 @@ class bot:
                         else:
                             returnable = (returnable +self.knowledge.get(k))
                     else:
-                        if(v!=''):
-                            if(v[0]=='~'):
-                                if(v[1:]=='param'):
-                                    k = params[pindex]
-                                    pindex+=1
-                                else:
-                                    k = v[1:]
-                                # print(v[1:])
-                                if(self.knowledge.get(k) == None):
-                                        return k +" is not in my knowledge yet"
-                                else:
-                                    returnable+=self.knowledge.get(k)
-                            #     returnable+=k[1:]
-                            # else:
-                            #     if(v[-1]=='"'):
-                            #         returnable+=k[:-1]
-                            #     else:
-                                    
-                                    
+                        if(v[0]=='~'):
+                            if(v[1:]=='param'):
+                                k = params[pindex]
+                                pindex+=1
                             else:
-                                returnable += k
+                                k = v[1:]
+                            if(self.knowledge.get(k) == None):
+                                    return k +" is not in my knowledge yet"
+                            else:
+                                returnable+=self.knowledge.get(k)
+                                
+                        else:
+                            returnable += k
             returnable+=" "
                         
         return returnable
 
 
     def handleRule(self, rule, params, paramDict):
-        # print(rule, params, paramDict)
         if(rule[0].lower()=="forget"):
-            self.forget(paramDict[0])
+            # self.forget(paramDict[0])
             print(rule, paramDict, params)
         if(rule[0].lower()=="response"):
-            # print(params, rule[1])
             print(self.responseHandler(rule[1], params))
         if (rule[0].lower() == "learn"):
             if params.__len__() < 1:
@@ -214,9 +184,7 @@ class bot:
                     if not(self.RepresentsInt(params[0]) and self.RepresentsInt(params[1])):
                         print("Illegal Argument Type")
                     else:
-                        #numb1 = int(input("Enter the first number:" ))
                         numb1 = int(params[0])
-                        #numb2 = int(input("Enter the second number: "))
                         numb2 = int(params[1])
                         if(rule[1].lower()=="sum"):
                             print("The result is "+str(Actions.Sum(numb1, numb2)))
