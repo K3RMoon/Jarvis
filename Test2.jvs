@@ -8,7 +8,7 @@ Friday{
 "What is my ~param" : Response(param);
 "Sum numbers ~param ~param" : Action.Sum(param, param);
 "Resta ~param ~param" : Action.Subtract(param, param);
-"Multiplica ~param ~param" : Action.Multiply(param, param);
+"Multiplica ~num1 ~num2" : Action.Multiply(num1, num2);
 "Power ~param ~param" : Action.Power(param, param);
 "tell me a Joke" : Action.Joke();
 "Roll it" : Action.RollDice();

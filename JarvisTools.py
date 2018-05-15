@@ -61,6 +61,7 @@ class bot:
                 else:
                     if(ruleList[cindex2][cindex][0]=='~'):
                         params.append(x)
+                        #THIS SHOULD BE COMMENTED
                         #rule[cindex] = "~param"
                         # Quick fix to allos other parameter names!
                         ##**rule[cindex] = ""+ruleList[cindex2][cindex]

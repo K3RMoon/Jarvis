@@ -6,7 +6,7 @@ whatup ~param:Response$~param right?
 what is my ~param:Response$~param 
 sum numbers ~param ~param:Action$SUM
 resta ~param ~param:Action$SUBTRACT
-multiplica ~param ~param:Action$MULTIPLY
+multiplica ~num1 ~num2:Action$MULTIPLY
 power ~param ~param:Action$POWER
 tell me a joke:Action$JOKE
 roll it:Action$ROLLDICE
