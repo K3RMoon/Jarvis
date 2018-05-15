@@ -166,7 +166,11 @@ class bot:
                     else:
                         if(v!=''):
                             if(v[0]=='~'):
-                                k = v[1:]
+                                if(v[1:]=='param'):
+                                    k = params[pindex]
+                                    pindex+=1
+                                else:
+                                    k = v[1:]
                                 # print(v[1:])
                                 if(self.knowledge.get(k) == None):
                                         return k +" is not in my knowledge yet"
