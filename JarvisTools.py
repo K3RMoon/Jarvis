@@ -15,6 +15,7 @@ class bot:
     def learn(self, attrName, attr):
         self.knowledge[attrName] = attr #allows overwrite
         self.fileManager.writeContent(self.knowledge)
+        print("I will remember", attrName,"as",attr)
 
     def addRule(self, phrase, RuleType, response):
 
@@ -48,7 +49,6 @@ class bot:
                 #print("rule part")
                 #print(x)
                 #print("other rule part")
-                #print(ruleList[cindex2][cindex])
                 if not (ruleList[cindex2][cindex][0]=='~' or x.lower() == ruleList[cindex2][cindex].lower()):
                     trues = 0
                     params[:] = []
@@ -62,7 +62,7 @@ class bot:
                         #rule[cindex] = "~param"
                         # Quick fix to allos other parameter names!
                         ##**rule[cindex] = ""+ruleList[cindex2][cindex]
-                        rule[cindex] = "~param"
+                        # rule[cindex] = "~param"
                     trues+=1
                     #print("trues")
                     #print(trues)
@@ -164,8 +164,7 @@ class bot:
 
     def handleRule(self, rule, params, paramDict):
         if(rule[0].lower()=="forget"):
-            # self.forget(paramDict[0])
-            print(rule, paramDict, params)
+            self.forget(params[0]) #Works only for one param 
         if(rule[0].lower()=="response"):
             print(self.responseHandler(rule[1], params))
         if (rule[0].lower() == "learn"):
@@ -222,6 +221,8 @@ class bot:
         if attrName in keys:
             del self.knowledge[attrName]
             self.fileManager.writeContent(self.knowledge)
+            print("I wil not remember",attrName,"anymore")
+
 
         else:
             print(attrName + " is not in knowledge")
