@@ -31,7 +31,7 @@ Friday{
 }
 Jarvis{
     "Multiply ~param ~param" : Action.Multiply(param, param);
-	"Whats ~param to the ~param power" : Action.Power(param, param);
+    "Whats ~param to the ~param power" : Action.Power(param, param);
     "Tell me a joke" : Action.Joke();
     "Throw de dice" : Action.RollDice();
     "What is the root of ~param" : Action.Root(param);
