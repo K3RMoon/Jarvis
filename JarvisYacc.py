@@ -172,12 +172,16 @@ def p_create_bot(p):
             rule2 = rule[2]
             if ((rule[2][0])=='\"' and (rule[2][(len(rule[2])-1)])=='\"'):
                 rule2 = rule[2][1:(len(rule[2])-1)]
-
-            currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule2)
+            if (rule[0][1:(len(rule[0])-1)]).lower() not in currentBot.rules.keys():
+                currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule2)
+            else:
+                print("Error: " + currentBot.name + " already knows rule: " + rule[0][1:(len(rule[0])-1)])
+                raise Exception()
         currentBot = None
     except Exception as e:
         print(e)
         print("Error in definition, cannot create bot.")
+        raise Exception()
 
 
 
@@ -187,6 +191,7 @@ def p_create_bot(p):
 def p_error(p):
     print("ERROR: ")
     print(p)
+    raise Exception()
 
 # Build the parser
 parser = yacc.yacc()
