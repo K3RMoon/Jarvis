@@ -1,37 +1,61 @@
-## Welcome to GitHub Pages
+# Jarvis
 
-You can use the [editor on GitHub](https://github.com/K3RMoon/Jarvis/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## What is a bot?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A bot is a piece of software that can execute commands, reply to messages or perform routine task, either automatically or with minimal human intervention. For this project, the bot will be an executable program that runs in the terminal/command prompt. 
 
-### Markdown
+## What is Jarvis?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Jarvis is a programming language that facilitates the creation of local bots. Its simple syntax makes it possible someone with no programming knowledge to create a bot with a variety of basic functions.
 
-```markdown
-Syntax highlighted code block
+## Language Features
 
-# Header 1
-## Header 2
-### Header 3
+Jarvis allows the programmer to create a system of bots that the user can execute and interact with locally, each with their unique names, using a simple syntax. 
 
-- Bulleted
-- List
+A Jarvis bot can:
 
-1. Numbered
-2. List
+1. Respond to user's input with predefined messages
+2. Learn information as requested from the user
 
-**Bold** and _Italic_ and `Code` text
+## Sample Bot System
 
-[Link](url) and ![Image](src)
+```javascript
+Friday{
+    "Hey" : Response("Hello");
+    "Learn that my ~param is ~param": Learn(param);
+    "Forget ~param":Forget(param);
+    "Hi" : Response("Hi" + name);
+    "Tell me my ~param" : Response(param + "right?");
+    "Sum numbers ~param ~param" : Action.Sum(param, param);
+    "Substract ~param ~param" : Action.Subtract(param, param);
+}
+Jarvis{
+    "Multiply ~param ~param" : Action.Multiply(param, param);
+	"Whats ~param to the ~param power" : Action.Power(param, param);
+    "Tell me a joke" : Action.Joke();
+    "Throw de dice" : Action.RollDice();
+    "What is the root of ~param" : Action.Root(param);
+    "what is ~param over ~param" : Action.Divide(param, param);
+    "what is ~param mod ~param" : Action.Modulo(param, param);
+    "Give me a random number" : Action.Random();
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Install Jarvis
 
-### Jekyll Themes
+### Requirements
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/K3RMoon/Jarvis/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Python 3
+2. ply
 
-### Support or Contact
+To install Jarvis in your computer simply clone this project on your computer
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Execute the program
+
+After installing and creating your first bot, save the program to a file with extension .jvs
+
+Your bot can now be executed from the command line (cmd, batch, etc) using python with the following command
+
+> python path_to_project/Jarvis.py path_to_bot_file/file_name
+
+notice that file_name does not contains the .jvs extension.
