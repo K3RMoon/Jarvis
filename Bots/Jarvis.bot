@@ -1,1 +1,8 @@
-puerco:Response$Tu madre 
+multiply ~param ~param:Action$MULTIPLY
+whats ~param to the ~param power:Action$POWER
+tell me a joke:Action$JOKE
+throw de dice:Action$ROLLDICE
+what is the root of ~param:Action$ROOT
+what is ~param over ~param:Action$DIVIDE
+what is ~param mod ~param:Action$MODULO
+give me a random number:Action$RANDOM

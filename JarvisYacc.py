@@ -158,11 +158,15 @@ def p_create_bot(p):
     '''create_bot : ID LC rules RC'''
     try:
     #if True:
+
         if bot_in_use(p[1]): #para que no se permita crear 2 bots con el mismo nombre en el mismo file
             print('Error: Bot ' + p[1] + ' already exists.')
             return
+
+
         currentBot = JT.bot(p[1])
         thebots.append(currentBot)
+
         #A~adiendo las reglas al bot
         for rule in p[3]:
             rule2 = rule[2]
@@ -171,7 +175,8 @@ def p_create_bot(p):
 
             currentBot.addRule(rule[0][1:(len(rule[0])-1)], rule[1], rule2)
         currentBot = None
-    except:
+    except Exception as e:
+        print(e)
         print("Error in definition, cannot create bot.")
 
 

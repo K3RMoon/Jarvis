@@ -1,5 +1,6 @@
 from samplebot.FileManager import FileManager
 from samplebot import Actions
+import os
 
 thebots = {}
 currentBot = None
@@ -7,6 +8,8 @@ currentBot = None
 class bot:
     def __init__(self, name):
         self.name = name
+        if(not os.path.exists("Bots")):
+            os.mkdir("Bots")
         self.rulesManager = FileManager("Bots\\" +name+".bot")#rules files
         self.fileManager = FileManager("Bots\\"+name+"knowledge.bot") #knowledge file
         self.rules = self.rulesManager.getDictionary()
