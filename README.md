@@ -1,4 +1,4 @@
-<img src="Images/wchunksawfflrslgvlax.jpg" alt="hi" class="inline"/>
+<img src="Images/JarvisLogo.png" alt="jlogo" class="inline"/>
 
 # Jarvis
 
