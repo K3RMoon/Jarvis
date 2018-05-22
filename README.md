@@ -1,4 +1,4 @@
-<img src="Images/bees.png" alt="jlogo" class="inline"/>
+<img src="Images/bees.jpg" alt="jlogo" class="inline"/>
 
 # Jarvis
 
