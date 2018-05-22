@@ -16,6 +16,7 @@ A Jarvis bot can:
 
 1. Respond to user's input with predefined messages
 2. Learn information as requested from the user
+3. Perform a series of actions like math operations, randomize, jokes, etc.
 
 ## Sample Bot System
 
