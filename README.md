@@ -6,7 +6,7 @@ A bot is a piece of software that can execute commands, reply to messages or per
 
 ## What is Jarvis?
 
-Jarvis is a programming language that facilitates the creation of local bots. Its simple syntax makes it possible someone with no programming knowledge to create a bot with a variety of basic functions.
+Jarvis is a programming language that facilitates the creation of local bots. Its simple syntax makes it possible someone with no programming knowledge to create a bot with a variety of basic functions. You can now have a smart assistant that can answer whatever you want, and do whatever you want, locally.
 
 ## Language Features
 
