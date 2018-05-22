@@ -1,3 +1,5 @@
+<img src="Images/wchunksawfflrslgvlax.jpg" alt="hi" class="inline"/>
+
 # Jarvis
 
 ## What is a bot?
