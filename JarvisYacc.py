@@ -184,8 +184,7 @@ def p_create_bot(p):
 
 #Por si se recibe un error
 def p_error(p):
-    print("ERROR: ")
-    print(p)
+    print("ERROR: Syntax error.")
     raise Exception()
 
 # Build the parser

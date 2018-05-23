@@ -22,5 +22,5 @@ Friday{
 
 }
 Jarvis{
-"I want to die" : Action.Joke();
+"Im sad" : Action.Joke();
 }
