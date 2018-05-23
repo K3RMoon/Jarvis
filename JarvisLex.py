@@ -136,21 +136,3 @@ def t_error(t):
 
 #Build Lexer
 lexer = lex.lex()
-
-# Test it out
-'''
-data = '''
-"Kelvin or Sucks" #+ herbertherb3rt ((}) + ; . or and Create RollDice
-'''
-
-# Give the lexer some input
-lexer.input(data)
-
-# Tokenize
-while True:
-    tok = lexer.token()
-    if not tok:
-        break      # No more input
-    print(tok)
-
-'''
