@@ -66,4 +66,4 @@ notice that file_name does not contains the .jvs extension.
 
 ## View Final Report
 
-(Jarvis/Jarvis Final Report.pdf "Final Report")
+[Final Report](Jarvis/Jarvis Final Report.pdf)
