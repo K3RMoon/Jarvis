@@ -63,3 +63,7 @@ Your bot can now be executed from the command line (cmd, batch, etc) using pytho
 > python path_to_project/Jarvis.py path_to_bot_file/file_name
 
 notice that file_name does not contains the .jvs extension.
+
+## View Final Report
+
+(Jarvis/Jarvis Final Report.pdf "Final Report")
